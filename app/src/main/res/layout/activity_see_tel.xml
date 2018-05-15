@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_see_tel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="wai.gr.cla.ui.SeeTelActivity"
+    android:orientation="vertical">
+    <net.tsz.afinal.view.TitleBar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/login_bg"
+        app:center_tv="您绑定的手机号" />
+    <RelativeLayout
+        android:id="@+id/change_pwd_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="15dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tel_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+</LinearLayout>

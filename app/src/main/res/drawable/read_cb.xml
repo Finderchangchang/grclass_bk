@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:drawable="@drawable/zhuceheyue_xuanzekuang_selected" android:state_checked="true" /> <!-- checked -->
+
+
+    <item android:drawable="@drawable/zhuceheyue_xuanzekuang" android:state_checked="false" /> <!-- default -->
+
+
+</selector>

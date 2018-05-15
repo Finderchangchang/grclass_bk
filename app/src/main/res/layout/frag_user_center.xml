@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_srl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/zb_click"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:background="@mipmap/gerenzhongxin_beijing">
+
+                <ImageView
+                    android:id="@+id/user_iv_header"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_above="@+id/user_ll"
+                    android:layout_centerHorizontal="true"
+                    android:padding="4dp"
+                    android:src="@mipmap/defult_user" />
+
+                <LinearLayout
+                    android:id="@+id/user_ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/user_tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="未登录"
+                        android:textColor="@color/login_bg" />
+
+                    <ImageView
+                        android:id="@+id/lv_iv"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@mipmap/member_lv1" />
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/iv_set"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:padding="8dp"
+                    android:src="@mipmap/me_shezhiicon" />
+
+
+            </RelativeLayout>
+
+            <net.tsz.afinal.view.MenuView
+                android:id="@+id/user_mv_che"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:menu_left_iv="@mipmap/me_shubaoicon"
+                app:menu_left_tv="我的书包"
+                app:menu_left_tv_color="@color/peisong_lab" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <net.tsz.afinal.view.MenuView
+                android:id="@+id/user_mv_kecheng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu_left_iv="@mipmap/me_kechengicon"
+                app:menu_left_tv="我的课程"
+                app:menu_left_tv_color="@color/peisong_lab" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <net.tsz.afinal.view.MenuView
+                android:id="@+id/user_mv_huancun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu_left_iv="@mipmap/me_huancunicon"
+                app:menu_left_tv="我的下载"
+                app:menu_left_tv_color="@color/peisong_lab" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <net.tsz.afinal.view.MenuView
+                android:id="@+id/user_mv_dy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu_left_iv="@mipmap/me_dingyueiicon"
+                app:menu_left_tv="我的订阅"
+                app:menu_left_tv_color="@color/peisong_lab" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <net.tsz.afinal.view.MenuView
+                android:id="@+id/user_mv_sc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu_left_iv="@mipmap/star_user"
+                app:menu_left_tv="我的收藏"
+                app:menu_left_tv_color="@color/peisong_lab" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <net.tsz.afinal.view.MenuView
+                android:id="@+id/user_mv_quan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu_left_iv="@mipmap/me_youhuiquaniicon"
+                app:menu_left_tv="我的优惠券"
+                app:menu_left_tv_color="@color/peisong_lab" />
+
+            <net.tsz.afinal.view.MenuView
+                android:id="@+id/user_mv_dd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:menu_left_iv="@mipmap/me_dingdanicon"
+                app:menu_left_tv="我的订单"
+                app:menu_left_tv_color="@color/peisong_lab" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <net.tsz.afinal.view.MenuView
+                android:id="@+id/gb_mv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu_left_iv="@mipmap/me_guanbiicon"
+                app:menu_left_tv="我的冠币"
+                app:menu_left_tv_color="@color/peisong_lab" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <net.tsz.afinal.view.MenuView
+                android:id="@+id/user_mv_jifen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu_left_iv="@mipmap/me_jifenicon"
+                app:menu_left_tv="积分排行"
+                app:menu_left_tv_color="@color/peisong_lab" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <net.tsz.afinal.view.MenuView
+                android:id="@+id/user_mv_youxi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:menu_left_iv="@mipmap/me_youxiicon"
+                app:menu_left_tv="互动游戏"
+                app:menu_left_tv_color="@color/peisong_lab" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <net.tsz.afinal.view.MenuView
+                android:id="@+id/user_mv_yijian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu_left_iv="@mipmap/me_fankuiicon"
+                app:menu_left_tv="意见反馈"
+                app:menu_left_tv_color="@color/peisong_lab" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <net.tsz.afinal.view.MenuView
+                android:id="@+id/user_mv_fk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu_left_iv="@mipmap/me_fankuiicon"
+                app:menu_left_tv="反馈回复"
+                app:menu_left_tv_color="@color/peisong_lab" />
+
+        </LinearLayout>
+    </ScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>

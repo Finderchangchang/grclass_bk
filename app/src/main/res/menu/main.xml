@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@mipmap/home_button_search"
+        android:orderInCategory="100"
+        android:title="视频"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_add"
+        android:icon="@mipmap/main_back"
+        android:title="资讯"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_adds"
+        android:icon="@mipmap/main_back"
+        android:title="资讯1"
+        app:showAsAction="never" />
+</menu>

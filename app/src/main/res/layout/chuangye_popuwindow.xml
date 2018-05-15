@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/text_hint"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/add_chuang_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:hint="姓  名"
+        android:padding="10dp"
+        android:textColorHint="@color/title_zx" />
+
+    <EditText
+        android:id="@+id/chuang_et_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:hint="电  话"
+        android:padding="10dp"
+        android:textColorHint="@color/title_zx" />
+
+    <EditText
+        android:id="@+id/chaung_et_pname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:hint="项目名称"
+        android:padding="10dp"
+        android:textColorHint="@color/title_zx" />
+
+    <EditText
+        android:id="@+id/chuang_et_remark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="left|top"
+        android:hint="项目简述..."
+        android:minLines="5"
+        android:padding="10dp" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <Button
+        android:id="@+id/chuang_btn_exit"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_button_juhang"
+        android:text="取  消"
+        android:textColor="@color/white" />
+    <Button
+        android:id="@+id/chuang_btn_save"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/bg_fang_blue"
+        android:text="提  交"
+        android:textColor="@color/white" />
+</LinearLayout>
+
+</LinearLayout>

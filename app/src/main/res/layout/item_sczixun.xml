@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/sc_zixun_delete"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@mipmap/delete_hong"
+        android:visibility="gone"
+        android:layout_marginRight="5dp"/>
+
+    <ImageView
+        android:id="@+id/tag_iv"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/error_img_sml" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="王东东 "
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/time_tv"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="2014-09-17 16:50"
+                android:textColor="@color/tag_hui"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:background="@color/lv_bg"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@mipmap/cursevideo_share_qq"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/sc_tv"
+                    android:layout_width="40dp"
+                    android:layout_height="18dp"
+                    android:background="@mipmap/dianzanshuliang"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="18dp"
+                    android:text="99"
+                    android:textColor="@color/login_bg"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/lv_bg"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/pl_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/liuyansuliang"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="25dp"
+                    android:text="32"
+                    android:textColor="@color/login_bg"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>

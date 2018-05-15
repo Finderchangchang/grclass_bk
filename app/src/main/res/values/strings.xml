@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">冠人教育</string>
+    <string name="audition_class">讲座直播</string>
+    <string name="high_quality_class">精品课</string>
+    <string name="answer_question_class">答疑专栏</string>
+    <string name="error_internet">请检查网络连接</string>
+    <string name="no_pl">暂无任何评论</string>
+    <string name="detail_text">芬撒地方我发斯蒂芬是阿斯蒂芬撒地撒
+        打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打撒
+        发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿
+        芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方我发斯蒂芬是打发阿
+        撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方</string>
+    <string name="share_desc">冠人专接本是多年来专注专接本考试培训的河北冠人教育软件科技有限公司推出的手机APP移动端产品，致力为专接本考生提供便捷、优质的全方位网络学习产品和服务，构建移动学习生态圈，让学生享受更自由的学习方式，让知识触手可及。</string>
+    <string name="share_title">冠人教育</string>
+    <string name="share_url">www.baidu.com</string>
+
+
+    <string name="hello_world">H</string>
+    <string name="action_settings">Settings</string>
+    <string name="progress_title">正在处理</string>
+    <string name="progress_message">请耐心等待</string>
+    <string name="app_bg_text">此demo仅用于演示</string>
+    <string name="login_text">登录</string>
+    <string name="test_text">正在选择节点</string>
+    <string name="chat_broadcast_text">群发消息</string>
+    <string name="update_nickname_text">修改昵称</string>
+    <string name="rpc_broadcast_text">群发信令</string>
+    <string name="logout_text">离开房间</string>
+    <string name="user_title">房间人数：%1$d</string>
+    <string name="login_alert_hint">请输入任意房间号，对上即可进入相同房间</string>
+    <string name="login_alert_title">房间号不能为空</string>
+    <string name="login_alert_go">进入</string>
+    <string name="nickname_alert_hint">昵称不能为空</string>
+    <string name="nickname_alert_title">修改昵称</string>
+    <string name="nickname_alert_update">修改</string>
+    <string name="chat_alert_hint">请输入消息</string>
+    <string name="chat_session_alert_title">向指定用户发送消息</string>
+    <string name="chat_alert_title">群发消息</string>
+    <string name="rpc_alert_hint">请输入消息</string>
+    <string name="rpc_session_alert_title">向指定用户发送RPC</string>
+    <string name="rpc_alert_title">群发RPC</string>
+    <string name="alert_send">发送</string>
+    <string name="alert_exe_error">操作失败</string>
+    <string name="publish_stream">发布视频</string>
+    <string name="publish_stream_2">发布视频2</string>
+    <string name="publish_stop_stream">停止发布</string>
+    <string name="play_stream">播放视频</string>
+    <string name="play_stop_stream">停止播放</string>
+    <string name="switch_camera">切换摄像头</string>
+</resources>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context="wai.gr.cla.ui.PerfaceUserActivity">
+
+    <net.tsz.afinal.view.TitleBar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/login_bg"
+        android:layout_marginBottom="20dp"
+
+        app:center_tv="完善信息" />
+    <TextView
+        android:id="@+id/gr_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="完善个人信息"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="16sp"
+        android:textColor="@color/hei"
+        android:visibility="gone"/>
+    <LinearLayout
+        android:id="@+id/province_ll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/main_bg"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/province_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="请选择您的学校的省份"
+            android:textColor="#016DB8"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/school_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/school_tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/school_tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/perface_iv_sheng"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/gerenxinxixialabutton" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/city_ll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/main_bg"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/city_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="请选择您的学校的市"
+            android:textColor="#016DB8"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/perface_iv_shi"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/gerenxinxixialabutton" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/school_ll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/main_bg"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/school_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="请选择您所在学校"
+            android:textColor="#016DB8"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/perface_iv_school"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/gerenxinxixialabutton" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/time_ll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/main_bg"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="点击选择入学时间"
+            android:textColor="#016DB8"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/code_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/tel_et"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@color/main_bg"
+                android:gravity="center_vertical"
+                android:hint="请补全手机号码"
+                android:paddingLeft="20dp"
+                android:textColor="#016DB8"
+                android:textColorHint="#016DB8"
+                android:textSize="20sp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/send_code_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/send_code_btn_bg"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="获取验证码"
+                android:textColor="@android:color/white"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/code_et"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/main_bg"
+            android:gravity="center_vertical"
+            android:hint="请输入验证码"
+            android:paddingLeft="20dp"
+            android:textColor="#016DB8"
+            android:textColorHint="#016DB8"
+            android:textSize="20sp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/perface_btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/btn_bg_hui"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:enabled="false"/>
+</LinearLayout>

@@ -1,0 +1,166 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+//useOldManifestMerger true
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+    useLibrary 'org.apache.http.legacy'
+    //解决jar包冲突的问题
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+        exclude 'com.tencent.mm.opensdk'
+        exclude 'META-INF/LICENSE'
+    }
+    defaultConfig {
+        applicationId "wai.gr.cla1"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 10
+        versionName "2.9"
+        ndk {
+            //APP的build.gradle设置支持的SO库架构
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
+        }
+        multiDexEnabled true
+
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a','x86'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: "wai.gr.cla1",
+                JPUSH_APPKEY : "9654bdb3d8cfc48542ed571f",//测试版ID
+//                JPUSH_PKGNAME: "wai.gr.cla",
+//                JPUSH_APPKEY : "716427c76ac2440224761648", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+    }
+    /**
+     * 最新的ADT和SDK Tool在将jar转化成dex的时候，可能会合并类的代码，这将导致巨大的类；类中的每一个方法都分配有一个id，字节码中以id标识和调用方法；早期的Dalvik VM内部使用short类型变量来标识方法的id，最大值限制在65535。当方法数超过65535，则会报该错误。
+     * */
+    dexOptions {
+        jumboMode true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+//        signingConfigs {
+//            debug {
+//                storeFile file('debug.keystore')
+//                storePassword "android"
+//                keyAlias "androiddebugkey"
+//                keyPassword "android"
+//            }
+//        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.3.0'
+    }
+}
+apply plugin: 'me.tatarka.retrolambda'
+
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+dependencies {
+    compile project(':afinal')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile project(':gsyVideoPlayer')
+    compile files('libs/SocialSDK_WeiXin_Full.jar')
+    compile files('libs/umeng_shareboard_widget.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/umeng_social_net.jar')
+    compile files('libs/umeng_social_shareboard.jar')
+    compile files('libs/umeng_social_tool.jar')
+    compile files('libs/dom4j-1.6.1.jar')
+    compile files('libs/open_sdk_r5793_lite.jar')
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    compile 'cn.jiguang.sdk:jpush:3.0.3'
+    compile 'cn.jiguang.sdk:jcore:1.1.1'
+    compile 'jp.wasabeef:glide-transformations:2.0.0'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.tsy:pay:1.0.0'
+    compile 'com.github.jiang111:IndicatorDialog:v1.2.2'
+    compile 'com.lzy.net:okgo:2.1.4'
+    compile 'com.lzy.net:okrx:0.1.2'
+    compile 'com.lzy.net:okserver:1.1.3'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'com.android.support:design:26+'
+    compile 'me.iwf.photopicker:PhotoPicker:0.9.5@aar'
+    compile 'com.youth.banner:banner:1.4.9'
+    compile 'com.yinglan.alphatabs:library:1.0.5'
+    compile 'com.github.ctiao:DanmakuFlameMaster:0.5.3'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+    compile 'com.android.support:cardview-v7:26+'
+    compile 'me.relex:circleindicator:1.2.2@aar'
+    compile 'com.feezu.liuli:timeselector:1.1.3'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.kaopiz:kprogresshud:1.0.2'
+    compile 'org.sufficientlysecure:html-textview:3.4'
+    compile 'com.zaaach:toprightmenu:1.0'
+    compile 'liji.library.dev:citypickerview:2.0.1'
+    compile 'com.github.chihane:JDAddressSelector:1.1.3'
+    compile 'liji.library.dev:citypickerview:2.0.1'
+    compile(name: 'roomsdk_5.1.1', ext: 'aar')
+
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
+    compile 'com.jakewharton:butterknife:8.8.0'
+
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:support-v4:26.+'
+    compile 'com.android.support:recyclerview-v7:26.+'
+    compile 'com.github.iwgang:countdownview:2.1.6'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile 'com.github.bumptech.glide:okhttp3-integration:4.0.0'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+    compile 'com.alibaba:fastjson:1.1.67.android'
+    compile 'com.google.code.gson:gson:2.5'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+    compile 'com.orhanobut:logger:2.1.1'
+    compile 'top.zibin:Luban:1.1.3'
+}
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+    mavenCentral()
+}

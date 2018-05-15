@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="专接本"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tab1_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/zb_click"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tab2_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/zb_title_bg"
+                android:gravity="center"
+                android:orientation="vertical"></TextView>
+
+            <TextView
+                android:id="@+id/tab3_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/zb_title_bg"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tab4_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/zb_title_bg"
+                android:gravity="center"
+                android:orientation="vertical"></TextView>
+        </LinearLayout>
+
+        <com.yinglan.alphatabs.AlphaTabsIndicator
+            android:id="@+id/alphaIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <com.yinglan.alphatabs.AlphaTabView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="4dp"
+                app:tabIconNormal="@mipmap/zhuangjieben_kechengfenlei_bai"
+                app:tabIconSelected="@mipmap/zhuanjieben_button_kecheng_selected"
+                app:tabText="专接本"
+                app:textColorNormal="@color/bottom_normal"
+                app:textColorSelected="@color/bottom_normal" />
+
+            <com.yinglan.alphatabs.AlphaTabView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="4dp"
+                app:tabIconNormal="@mipmap/zigezheng_n"
+                app:tabIconSelected="@mipmap/zigezheng_s"
+                app:tabText="资格证考试"
+                app:textColorNormal="@color/bottom_normal"
+                app:textColorSelected="@color/bottom_normal" />
+
+            <com.yinglan.alphatabs.AlphaTabView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="4dp"
+                app:tabIconNormal="@mipmap/zhuanjieben_button_zixun"
+                app:tabIconSelected="@mipmap/zhuanjieben_button_zixun_selected"
+                app:tabText="资      讯"
+                app:textColorNormal="@color/bottom_normal"
+                app:textColorSelected="@color/bottom_normal" />
+
+            <com.yinglan.alphatabs.AlphaTabView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="4dp"
+                app:badgeBackgroundColor="#000"
+                app:tabIconNormal="@mipmap/zhuanjieben_button_zice"
+                app:tabIconSelected="@mipmap/zhuanjieben_button_monikaoshi_selected"
+                app:tabText="模拟考试"
+                app:textColorNormal="@color/bottom_normal"
+                app:textColorSelected="@color/bottom_normal" />
+
+        </com.yinglan.alphatabs.AlphaTabsIndicator>
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <LinearLayout
+        android:id="@+id/zb3_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/zb_click"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/gg_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="公共课"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/gg_tv"
+                    android:layout_alignStart="@+id/gg_tv"
+                    android:layout_below="@+id/gg_tv"
+                    android:layout_marginTop="2dp"
+                    android:text="专业课"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="13dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/gg_tv"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="12dp"
+                    android:src="@mipmap/jt" />
+
+                <ImageView
+                    android:layout_width="13dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/jt_bottom" />
+            </RelativeLayout>
+
+            <GridView
+                android:id="@+id/gg_class_gv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="3"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="30dp"
+                    android:text="高等数学"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingRight="30dp"
+                    android:text="英语"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingRight="30dp"
+                    android:text="政治"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal">
+
+            <ScrollView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scrollbars="none">
+
+                <wai.gr.cla.method.OnlyMeasureListView
+                    android:id="@+id/left_tag_lv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@null"
+                    android:dividerHeight="0dp" />
+            </ScrollView>
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/list_item_line" />
+
+            <ScrollView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-6dp"
+                android:layout_weight="3">
+
+                <wai.gr.cla.method.OnlyMeasureListView
+                    android:id="@+id/right_tag_lv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@null"
+                    android:dividerHeight="0dp" />
+            </ScrollView>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/only013_srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <net.tsz.afinal.view.ScrollBottomScrollView
+            android:id="@+id/only013_sr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--<LinearLayout
+                android:id="@+id/only013"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <net.tsz.afinal.view.ScrollBottomScrollView
+                    android:id="@+id/zb_sv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible">-->
+
+            <LinearLayout
+                android:id="@+id/class_manage_ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <wai.gr.cla.method.MyGridView
+                    android:id="@+id/public_class_gv"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/zb_click"
+                    android:numColumns="5"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="10dp" />
+
+                <LinearLayout
+                    android:id="@+id/st_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/audition_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="@string/audition_class"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/tuijian_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:src="@mipmap/zhuanjieben_tuijian"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <wai.gr.cla.method.MyGridView
+                    android:id="@+id/st_video_gv"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@android:color/white"
+                    android:numColumns="3"
+                    android:padding="5dp" />
+
+
+                <TextView
+                    android:id="@+id/high_quality_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="@string/high_quality_class"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+
+                <wai.gr.cla.method.MyGridView
+                    android:id="@+id/high_video_gv"
+                    android:layout_width="match_parent"
+                    android:layout_height="450dp"
+                    android:background="@android:color/white"
+                    android:numColumns="3"
+                    android:padding="5dp" />
+                <wai.gr.cla.method.MyGridView
+                    android:id="@+id/ks_gv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:numColumns="3"
+                    android:padding="5dp" />
+                <!-- </LinearLayout>
+             </net.tsz.afinal.view.ScrollBottomScrollView>-->
+            </LinearLayout>
+        </net.tsz.afinal.view.ScrollBottomScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/main_srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:background="@color/zb_click">
+
+        <!--<ScrollView-->
+            <!--android:id="@+id/main_sr"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <wai.gr.cla.method.OnlyLoadListView
+                    android:id="@+id/zls_lv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white" />
+            </LinearLayout>
+        <!--</ScrollView>-->
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>
