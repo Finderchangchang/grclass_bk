@@ -211,6 +211,7 @@ class MainFragment : BaseFragment() {
         jz_ll = view.findViewById<LinearLayout>(R.id.jz_ll) as LinearLayout
         jp_ll = view.findViewById<LinearLayout>(R.id.jp_ll) as LinearLayout
         dy_ll = view.findViewById<LinearLayout>(R.id.dy_ll) as LinearLayout
+        main_ban!!.setDelayTime(5000)
         main_ban!!.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 

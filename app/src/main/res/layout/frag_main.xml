@@ -71,12 +71,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:paddingBottom="12dp"
                         android:paddingLeft="10dp"
-                        android:paddingRight="20dp"
-                        android:text="..."
+                        android:paddingRight="10dp"
+                        android:text="查看全部"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:textSize="12sp"  />
                 </LinearLayout>
 
 
@@ -105,7 +104,7 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
-                        android:text="精品课"
+                        android:text="精品课程"
                         android:textSize="16sp" />
 
                     <TextView
@@ -113,12 +112,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:paddingBottom="12dp"
                         android:paddingLeft="10dp"
-                        android:paddingRight="20dp"
-                        android:text="..."
+                        android:paddingRight="10dp"
+                        android:text="查看全部"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:textSize="12sp"  />
                 </LinearLayout>
 
 
@@ -156,12 +154,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:paddingBottom="12dp"
                         android:paddingLeft="10dp"
-                        android:paddingRight="20dp"
-                        android:text="..."
+                        android:paddingRight="10dp"
+                        android:text="查看全部"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <wai.gr.cla.method.OnlyMeasureGridView
@@ -195,12 +192,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:paddingBottom="12dp"
                         android:paddingLeft="10dp"
-                        android:paddingRight="20dp"
-                        android:text="..."
+                        android:paddingRight="10dp"
+                        android:text="查看全部"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
 
@@ -229,7 +225,7 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
-                        android:text="模拟考试"
+                        android:text="模拟考场"
                         android:textSize="16sp" />
 
                     <TextView
@@ -237,12 +233,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:paddingBottom="12dp"
                         android:paddingLeft="10dp"
-                        android:paddingRight="20dp"
-                        android:text="..."
+                        android:paddingRight="10dp"
+                        android:text="查看全部"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:textSize="12sp"  />
                 </LinearLayout>
 
 

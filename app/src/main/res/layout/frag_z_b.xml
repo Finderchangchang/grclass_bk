@@ -42,7 +42,8 @@
                 android:layout_weight="1"
                 android:background="@color/zb_title_bg"
                 android:gravity="center"
-                android:orientation="vertical"></TextView>
+                android:orientation="vertical"
+                android:visibility="gone"></TextView>
 
             <TextView
                 android:id="@+id/tab3_tv"
@@ -78,7 +79,7 @@
                 android:padding="4dp"
                 app:tabIconNormal="@mipmap/zhuangjieben_kechengfenlei_bai"
                 app:tabIconSelected="@mipmap/zhuanjieben_button_kecheng_selected"
-                app:tabText="专接本"
+                app:tabText="精品课程"
                 app:textColorNormal="@color/bottom_normal"
                 app:textColorSelected="@color/bottom_normal" />
 
@@ -91,7 +92,8 @@
                 app:tabIconSelected="@mipmap/zigezheng_s"
                 app:tabText="资格证考试"
                 app:textColorNormal="@color/bottom_normal"
-                app:textColorSelected="@color/bottom_normal" />
+                app:textColorSelected="@color/bottom_normal"
+                android:visibility="gone"/>
 
             <com.yinglan.alphatabs.AlphaTabView
                 android:layout_width="0dp"
@@ -100,7 +102,7 @@
                 android:padding="4dp"
                 app:tabIconNormal="@mipmap/zhuanjieben_button_zixun"
                 app:tabIconSelected="@mipmap/zhuanjieben_button_zixun_selected"
-                app:tabText="资      讯"
+                app:tabText="专接本资讯"
                 app:textColorNormal="@color/bottom_normal"
                 app:textColorSelected="@color/bottom_normal" />
 
@@ -112,7 +114,7 @@
                 app:badgeBackgroundColor="#000"
                 app:tabIconNormal="@mipmap/zhuanjieben_button_zice"
                 app:tabIconSelected="@mipmap/zhuanjieben_button_monikaoshi_selected"
-                app:tabText="模拟考试"
+                app:tabText="模拟考场"
                 app:textColorNormal="@color/bottom_normal"
                 app:textColorSelected="@color/bottom_normal" />
 

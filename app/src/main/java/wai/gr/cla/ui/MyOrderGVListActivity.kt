@@ -165,7 +165,6 @@ class MyOrderGVListActivity : BaseActivity() {
             sp2_list.clear()
         }
         if (which_more == 1) {//加载更多视频
-
             OkGo.post(url().public_api + "get_phone_recommend_course_list")
                     .params("page", page_index)
                     .params("free", free)

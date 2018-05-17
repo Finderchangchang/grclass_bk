@@ -43,7 +43,7 @@
             android:padding="2dp"
             app:tabIconNormal="@mipmap/home_button_zhuanjieben"
             app:tabIconSelected="@mipmap/home_button_zhuanjieben_selected"
-            app:tabText="课程中心"
+            app:tabText="精品课程"
             app:tabTextSize="10sp"
             app:textColorNormal="@color/bottom_normal"
             app:textColorSelected="@color/main_toolbar" />
@@ -55,7 +55,7 @@
             android:padding="2dp"
             app:tabIconNormal="@mipmap/home_button_jiuyechuangye"
             app:tabIconSelected="@mipmap/jiuyechuangye_selected"
-            app:tabText="在线直播"
+            app:tabText="直播课程"
             app:tabTextSize="10sp"
             app:textColorNormal="@color/bottom_normal"
             app:textColorSelected="@color/main_toolbar" />

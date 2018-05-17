@@ -11,7 +11,7 @@ import wai.gr.cla.ui.*
  */
 
 class MainAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
-    internal var fragment = arrayOf<Fragment>(MainFragment(), ZBFragment(), LiveFragment(), UserFragment())
+    internal var fragment = arrayOf<Fragment>(MainFragment(), ZBFragment(), JYFragment(), UserFragment())
 
     override fun getItem(position: Int): Fragment {
         return fragment[position]

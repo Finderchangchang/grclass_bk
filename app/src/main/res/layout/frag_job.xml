@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/login_bg"
-        app:center_tv="就业创业"
+        app:center_tv="直播课程"
         app:no_left_iv="true" />
 
     <LinearLayout
@@ -32,7 +32,7 @@
             android:layout_weight="1"
             android:background="@drawable/title_tg_click"
             android:gravity="center"
-            android:text="就业直通车"
+            android:text="直播课程"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
 
@@ -44,7 +44,7 @@
             android:layout_weight="1"
             android:background="@android:color/white"
             android:gravity="center"
-            android:text="我要创业"
+            android:text="免费课程"
             android:textColor="@color/login_bg"
             android:textSize="16sp" />
     </LinearLayout>
@@ -96,12 +96,20 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
-                    android:background="@color/main_bg"></View>
-
-                <wai.gr.cla.method.LoadListView
+                    android:background="@color/main_bg"/>
+                <wai.gr.cla.method.OnlyMeasureGridView
+                    android:id="@+id/title_gv"
+                    android:numColumns="5"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+                <wai.gr.cla.method.LoadGridView
                     android:id="@+id/main_lv"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:numColumns="3" />
 
             </LinearLayout>
 

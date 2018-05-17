@@ -27,48 +27,43 @@ import java.util.*
  */
 
 class JYFragment : BaseFragment() {
-    internal var tj_adapter: CommonAdapter<ZiXunModel>? = null
-    var tj_list = ArrayList<ZiXunModel>()
+    internal var title_adapter: CommonAdapter<ClassTag>? = null
+    var title_list = ArrayList<ClassTag>()
+    internal var tj_adapter: CommonAdapter<CoursesModel>? = null
+    var tj_list = ArrayList<CoursesModel>()
     var position = 5//cid=5就业，cid=4创业
+    var title_gv: GridView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        tj_adapter = object : CommonAdapter<ZiXunModel>(MainActivity.main, tj_list, R.layout.item_jiuye) {
-            override fun convert(holder: CommonViewHolder, model: ZiXunModel, index: Int) {
-                var time=model.show_time
-                if(time!!.length>=10){
-                    time=time.substring(0,10)
-                }
-                holder.setText(R.id.item_jiuye_tiem, time)
-                holder.setText(R.id.jiuyt_tv_title, model.title)
-                holder.setRoundImage(R.id.jiuye_iv_image, url().total + model.thumbnail)
-                holder.setText(R.id.jiuye_tv_shoucang, model.dianzan.toString())
-                holder.setText(R.id.jiuyt_tv_pinglun, model.comments.toString())
-                if (position == 5) {
-                    holder.setVisible(R.id.tag_ll, true)
+
+        title_adapter = object : CommonAdapter<ClassTag>(MainActivity.main, title_list, R.layout.item_tab) {
+            override fun convert(holder: CommonViewHolder, model: ClassTag, index: Int) {
+                holder.setText(R.id.name_tv, model.name)
+                if (model.click) {
+                    holder.setBG(R.id.name_tv, R.drawable.tag_click_bg)
                 } else {
-                    holder.setInVisible(R.id.tag_ll)
-                }
-                holder.setVisible(R.id.tag1_tv, false)
-                holder.setVisible(R.id.tag2_tv, false)
-                holder.setVisible(R.id.tag3_tv, false)
-                when (model.tags!!.size) {
-                    1 -> holder.setText(R.id.tag1_tv, model.tags!![0])
-                    2 -> {
-                        holder.setText(R.id.tag1_tv, model.tags!![0])
-                        holder.setText(R.id.tag2_tv, model.tags!![1])
-                    }
-                    3 -> {
-                        holder.setText(R.id.tag1_tv, model.tags!![0])
-                        holder.setText(R.id.tag2_tv, model.tags!![1])
-                        holder.setText(R.id.tag3_tv, model.tags!![2])
-                    }
+                    holder.setBG(R.id.name_tv, R.drawable.tag_bg)
                 }
             }
         }
+        tj_adapter = object : CommonAdapter<CoursesModel>(MainActivity.main, tj_list, R.layout.item_sp) {
+            override fun convert(holder: CommonViewHolder, model: CoursesModel, index: Int) {
+                holder.setText(R.id.tag_tv, model.title)
+                holder.setTopRoundImage(R.id.tag_iv, url().total + model.thumbnail)
+                if (model.price.equals("0.00") || model.price.equals("0")) {
+                    holder.setText(R.id.price_tv, "直播")
+                } else {
+                    holder.setText(R.id.price_tv, "￥" + model.price)
+                }
+            }
+        }
+
     }
 
+    var cid = ""
     var is_click: Boolean = false//右侧按钮是否点击
-    var main_lv: LoadListView? = null
+    var main_lv: LoadGridView? = null
     var main_sl: ScrollView? = null
     internal var main_srl: SwipeRefreshLayout? = null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -77,9 +72,11 @@ class JYFragment : BaseFragment() {
         val cy_btn = view.findViewById<TextView>(R.id.cy_btn) as TextView
         main_srl = view.findViewById<SwipeRefreshLayout>(R.id.main_srl) as SwipeRefreshLayout
         val have_project_ll = view.findViewById<LinearLayout>(R.id.have_project_ll) as LinearLayout
-        main_lv = view.findViewById<LoadListView>(R.id.main_lv) as LoadListView
+        main_lv = view.findViewById<LoadGridView>(R.id.main_lv) as LoadGridView
         val input_btn = view.findViewById<Button>(R.id.input_btn) as Button
         main_sl = view.findViewById<ScrollView>(R.id.main_sl) as ScrollView
+        title_gv = view.findViewById<GridView>(R.id.title_gv) as GridView
+
         jy_btn.setOnClickListener {
             jy_btn.setBackgroundResource(R.drawable.title_tg_click)
             jy_btn.setTextColor(resources.getColor(R.color.white))
@@ -88,16 +85,18 @@ class JYFragment : BaseFragment() {
             have_project_ll.visibility = View.GONE
             position = 5
             page_index = 1
-            initData()
+            title_gv!!.visibility = View.VISIBLE
+            click_refresh()
         }
         cy_btn.setOnClickListener {
             cy_btn.setBackgroundResource(R.drawable.title_tg_click)
             cy_btn.setTextColor(resources.getColor(R.color.white))
             jy_btn.setTextColor(resources.getColor(R.color.login_bg))
             jy_btn.setBackgroundColor(resources.getColor(R.color.white))
-            if (("0").equals(Utils.getCache(key.KEY_IS_POST))) {
-                have_project_ll.visibility = View.VISIBLE
-            }
+//            if (("0").equals(Utils.getCache(key.KEY_IS_POST))) {
+//                have_project_ll.visibility = View.VISIBLE
+//            }
+            title_gv!!.visibility = View.GONE
             position = 4
             page_index = 1
             initData()
@@ -117,37 +116,121 @@ class JYFragment : BaseFragment() {
         }
         main_srl!!.setOnRefreshListener {
             page_index = 1
-            initData()
+            if(position==5){
+                click_refresh()
+            }else {
+                initData()
+            }
         }
         main_lv!!.setOnItemClickListener { adapterView, view, i, l ->
             run {
                 if (i < tj_list.size) {
                     val intent = Intent(MainActivity.main, ZiXunDetailActivity::class.java)
                     intent.putExtra("cid", tj_list[i].id.toString())
-                    when(position){
-                        4->intent.putExtra("title", "就业创业")
-                        5->intent.putExtra("title", "就业直通车")
+                    when (position) {
+                        4 -> intent.putExtra("title", "免费课程")
+                        5 -> intent.putExtra("title", "直播课程")
                     }
 
                     startActivity(intent)
                 }
             }
         }
+        title_gv?.adapter = title_adapter
+        title_gv!!.setOnItemClickListener { adapterView, view, i, l ->
+            if (!title_list[i].click) {//没点击的才执行
+                for (model in title_list) {
+                    model.click = false
+                }
+                title_list[i].click = !title_list[i].click
+                title_adapter!!.refresh(title_list)
+                //查询全部的情况
+                if (i == 0) {
+                    cid = ""
+                } else {
+                    cid = title_list[i].cid.toString()
+                }
+                page_index=1
+                click_refresh()
+            }
+        }
+        initTitle()
         return view
+    }
+
+    fun initTitle() {
+        OkGo.post(url().public_api + "get_zhibo_cate")
+                .execute(object : JsonCallback<LzyResponse<JJ>>() {
+                    override fun onSuccess(t: LzyResponse<JJ>, call: Call?, response: Response?) {
+                        if (t.code == 0) {
+                            title_list.add(ClassTag("全部", true))
+                            t.data?.`_$138`
+                                    ?.flatMap { it.children }
+                                    ?.forEach { title_list.add(it.info!!) }
+                            title_adapter!!.refresh(title_list)
+                        } else {
+                            MainActivity.main!!.toast(t.msg.toString())
+                        }
+                        //main_srl!!.isRefreshing = false
+                    }
+
+                    override fun onError(call: Call?, response: Response?, e: Exception?) {
+                        Toast.makeText(context, common().toast_error(e!!), Toast.LENGTH_SHORT).show()
+                        //main_srl!!.isRefreshing = false
+                    }
+                })
+    }
+
+    fun click_refresh() {
+        if (page_index == 1) {
+            tj_list.clear()
+        }
+//        if (which_more == 1) {//加载更多视频
+
+        OkGo.post(url().public_api + "get_zhibo_course")
+                .params("page", page_index)
+                .params("cid", cid)
+                .execute(object : JsonCallback<LzyResponse<PageModel<CoursesModel>>>() {
+                    override fun onSuccess(t: LzyResponse<PageModel<CoursesModel>>, call: okhttp3.Call?, response: okhttp3.Response?) {
+                        tj_list.addAll(t.data!!.list as MutableList<CoursesModel>)
+                        tj_adapter!!.refresh(tj_list)
+                        main_lv?.getIndex(page_index, 20, t.data!!.count)
+                        //main_srl.isRefreshing = false
+
+                        if (tj_list.size == 0) {
+                            //error_ll.visibility = View.VISIBLE;
+                            main_lv?.visibility = View.GONE;
+                        } else {
+                            //error_ll.visibility = View.GONE;
+                            main_lv?.visibility = View.VISIBLE;
+                        }
+
+                    }
+
+                    override fun onError(call: Call?, response: Response?, e: Exception?) {
+                        //toast(common().toast_error(e!!))
+                        //main_srl.isRefreshing = false
+                    }
+                })
+
     }
 
     override fun onFragmentFirstVisible() {
         super.onFragmentFirstVisible()
-        initData()
+        if(position==5){
+            click_refresh()
+        }else {
+            initData()
+        }
     }
 
     internal var page_index = 1
     fun initData() {
-        OkGo.post(url().public_api + "get_phone_news_list")
+        OkGo.post(url().public_api + "get_phone_recommend_course_list")
                 .params("page", page_index)//当前页数
-                .params("cid", position)//当前页数
-                .execute(object : JsonCallback<LzyResponse<PageModel<ZiXunModel>>>() {
-                    override fun onSuccess(t: LzyResponse<PageModel<ZiXunModel>>, call: okhttp3.Call?, response: okhttp3.Response?) {
+                .params("free", "1")//当前页数
+                .execute(object : JsonCallback<LzyResponse<PageModel<CoursesModel>>>() {
+                    override fun onSuccess(t: LzyResponse<PageModel<CoursesModel>>, call: okhttp3.Call?, response: okhttp3.Response?) {
                         if (t.code == 0) {
                             if (page_index == 1) {
                                 tj_list.clear()
