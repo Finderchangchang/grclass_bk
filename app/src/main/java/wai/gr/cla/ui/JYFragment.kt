@@ -85,7 +85,7 @@ class JYFragment : BaseFragment() {
             have_project_ll.visibility = View.GONE
             position = 5
             page_index = 1
-            title_gv!!.visibility = View.VISIBLE
+            title_gv!!.visibility = View.GONE
             click_refresh()
         }
         cy_btn.setOnClickListener {
@@ -116,24 +116,18 @@ class JYFragment : BaseFragment() {
         }
         main_srl!!.setOnRefreshListener {
             page_index = 1
-            if(position==5){
+            if (position == 5) {
                 click_refresh()
-            }else {
+            } else {
                 initData()
             }
         }
-        main_lv!!.setOnItemClickListener { adapterView, view, i, l ->
+        main_lv!!.setOnItemClickListener { _, _, i, _ ->
             run {
-                if (i < tj_list.size) {
-                    val intent = Intent(MainActivity.main, ZiXunDetailActivity::class.java)
-                    intent.putExtra("cid", tj_list[i].id.toString())
-                    when (position) {
-                        4 -> intent.putExtra("title", "免费课程")
-                        5 -> intent.putExtra("title", "直播课程")
-                    }
-
-                    startActivity(intent)
-                }
+                val intent = Intent(MainActivity.main, DetailPlayer::class.java)
+                intent.putExtra("cid", tj_list[i].id)
+                intent.putExtra("is_live", true)
+                startActivity(intent)
             }
         }
         title_gv?.adapter = title_adapter
@@ -150,7 +144,7 @@ class JYFragment : BaseFragment() {
                 } else {
                     cid = title_list[i].cid.toString()
                 }
-                page_index=1
+                page_index = 1
                 click_refresh()
             }
         }
@@ -217,9 +211,9 @@ class JYFragment : BaseFragment() {
 
     override fun onFragmentFirstVisible() {
         super.onFragmentFirstVisible()
-        if(position==5){
+        if (position == 5) {
             click_refresh()
-        }else {
+        } else {
             initData()
         }
     }

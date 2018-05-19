@@ -184,7 +184,7 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
-                        android:text="在线直播"
+                        android:text="直播课程"
                         android:textSize="16sp" />
 
                     <TextView

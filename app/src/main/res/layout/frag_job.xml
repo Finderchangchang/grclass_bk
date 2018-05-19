@@ -92,11 +92,6 @@
                         android:textColor="@android:color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="@color/main_bg"/>
                 <wai.gr.cla.method.OnlyMeasureGridView
                     android:id="@+id/title_gv"
                     android:numColumns="5"
@@ -104,7 +99,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"/>
                 <wai.gr.cla.method.LoadGridView
                     android:id="@+id/main_lv"
                     android:layout_width="match_parent"
