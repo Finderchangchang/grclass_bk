@@ -47,7 +47,47 @@
                     android:divider="@color/white"
                     android:dividerHeight="0dp"
                     android:paddingLeft="10dp" />
+                <LinearLayout
+                    android:id="@+id/live_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:background="@android:color/white">
 
+                    <TextView
+                        style="@style/main_tag"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="直播课程"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/live_more_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="查看全部"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+
+                <wai.gr.cla.method.OnlyMeasureGridView
+                    android:id="@+id/live_gv"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/zu_tv"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/white"
+                    android:numColumns="3"
+                    android:paddingLeft="5dp"
+                    />
                 <LinearLayout
                     android:id="@+id/jz_ll"
                     android:layout_width="match_parent"
@@ -169,47 +209,7 @@
                     android:layout_marginTop="1dp"
                     android:numColumns="3"
                     android:background="@android:color/white" />
-                <LinearLayout
-                    android:id="@+id/live_ll"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
-                    android:visibility="gone"
-                    android:background="@android:color/white">
 
-                    <TextView
-                        style="@style/main_tag"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="10dp"
-                        android:text="直播课程"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/live_more_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:text="查看全部"
-                        android:textColor="@android:color/black"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-
-                <wai.gr.cla.method.OnlyMeasureGridView
-                    android:id="@+id/live_gv"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_below="@+id/zu_tv"
-                    android:layout_marginTop="1dp"
-                    android:background="@android:color/white"
-                    android:numColumns="3"
-                    android:paddingLeft="5dp"
-                    />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="35dp"

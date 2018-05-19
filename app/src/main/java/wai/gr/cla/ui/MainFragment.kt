@@ -152,12 +152,12 @@ class MainFragment : BaseFragment() {
                             tj_adapter!!.refresh(tj_list)
                         }
                         mf_list = data!!.free_courses as MutableList<TuiJianModel>?
-                        if (mf_list!!.size > 0) {
-                            jz_ll!!.visibility = View.VISIBLE
-                        } else {
-                            jz_ll!!.visibility = View.GONE
-                        }
-                        mf_adapter!!.refresh(mf_list)
+//                        if (mf_list!!.size > 0) {
+//                            jz_ll!!.visibility = View.VISIBLE
+//                        } else {
+//                            jz_ll!!.visibility = View.GONE
+//                        }
+                        //mf_adapter!!.refresh(mf_list)
 
                         zb_list = data!!.zhibo_courses as MutableList<LiveModel>?
                         if (zb_list!!.size > 0) {
