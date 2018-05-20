@@ -144,8 +144,8 @@ class MyOrderGVListActivity : BaseActivity() {
         main_gv.setOnItemClickListener { parent, view, position, id ->
             val title = toolbar.center_str
             when (which) {
-                4 -> startActivity(Intent(this, DetailPlayer::class.java).putExtra("cid", sp2_list!![position].id))
-                else -> startActivity(Intent(this, DetailPlayer::class.java).putExtra("cid", sc6_list!![position].course!!.id))
+                4 -> startActivity(Intent(this, DetailPlayer::class.java).putExtra("is_live", true).putExtra("cid", sp2_list!![position].id))
+                else -> startActivity(Intent(this, DetailPlayer::class.java).putExtra("is_live", true).putExtra("cid", sc6_list!![position].course!!.id))
             }
         }
         main_gv.setIsValid(object : OnlyLoadGridView.OnSwipeIsValid {

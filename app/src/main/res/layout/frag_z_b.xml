@@ -88,12 +88,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:padding="4dp"
+                android:visibility="gone"
                 app:tabIconNormal="@mipmap/zigezheng_n"
                 app:tabIconSelected="@mipmap/zigezheng_s"
                 app:tabText="资格证考试"
                 app:textColorNormal="@color/bottom_normal"
-                app:textColorSelected="@color/bottom_normal"
-                android:visibility="gone"/>
+                app:textColorSelected="@color/bottom_normal" />
 
             <com.yinglan.alphatabs.AlphaTabView
                 android:layout_width="0dp"
@@ -322,7 +322,8 @@
                     android:layout_marginTop="1dp"
                     android:background="@android:color/white"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
 
                     <TextView
@@ -351,7 +352,8 @@
                     android:layout_height="150dp"
                     android:background="@android:color/white"
                     android:numColumns="3"
-                    android:padding="5dp" />
+                    android:padding="5dp"
+                    android:visibility="gone" />
 
 
                 <TextView
@@ -374,6 +376,7 @@
                     android:background="@android:color/white"
                     android:numColumns="3"
                     android:padding="5dp" />
+
                 <wai.gr.cla.method.MyGridView
                     android:id="@+id/ks_gv"
                     android:layout_width="match_parent"
@@ -395,27 +398,27 @@
         android:background="@color/zb_click">
 
         <!--<ScrollView-->
-            <!--android:id="@+id/main_sr"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
+        <!--android:id="@+id/main_sr"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <wai.gr.cla.method.OnlyLoadListView
+                android:id="@+id/zls_lv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:background="@android:color/white" />
 
-                <wai.gr.cla.method.OnlyLoadListView
-                    android:id="@+id/zls_lv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/white" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="1dp"
-                    android:background="@color/white" />
-            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white" />
+        </LinearLayout>
         <!--</ScrollView>-->
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

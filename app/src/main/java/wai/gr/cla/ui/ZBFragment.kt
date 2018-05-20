@@ -273,10 +273,10 @@ class ZBFragment : BaseFragment() {
                         high_quality_tv.text = "精品课"
                         high_quality_tv.visibility = View.VISIBLE
                         high_video_gv.visibility = View.VISIBLE
-                        st_video_gv.visibility = View.VISIBLE
+                        st_video_gv.visibility = View.GONE//隐藏
                         main_srl!!.visibility = View.GONE
                         public_class_gv.visibility = View.VISIBLE
-                        st_ll.visibility = View.VISIBLE
+                        st_ll.visibility = View.GONE
                         tuijian_iv.visibility = View.GONE
                         high_video_gv.visibility = View.VISIBLE
                         ks_gv.visibility = View.GONE
@@ -689,7 +689,7 @@ class ZBFragment : BaseFragment() {
                 } else if (tj_list!!.size == 0) {
                     audition_tv!!.text = "暂无讲座直播"
                 }
-                tj_adapter!!.refresh(tj_list)
+                //tj_adapter!!.refresh(tj_list)
                 jp_list.addAll(t.data!!.sale_course!!.list!!)
                 sale_count = t.data!!.sale_course!!.count
                 jp_adapter!!.refresh(jp_list)
