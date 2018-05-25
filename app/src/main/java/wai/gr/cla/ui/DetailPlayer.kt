@@ -189,7 +189,7 @@ class DetailPlayer : BaseActivity() {
             if (car_btn.text != "加入书包") {
                 var intent = Intent(main, UriActivity::class.java);
                 intent.putExtra("room_id", roomAlias)
-                intent.putExtra("nick_name", name)
+                intent.putExtra("nick_name", Utils.getCache("nickname"))
                 intent.putExtra("user_id", user_id)
                 startActivity(intent)
             } else {

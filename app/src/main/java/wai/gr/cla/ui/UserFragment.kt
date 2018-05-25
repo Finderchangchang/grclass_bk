@@ -258,6 +258,7 @@ class UserFragment : BaseFragment() {
                             gb = t.data!!.guanbi
                             GlideImgManager.glideLoader(MainActivity.main, url().total + t.data!!.head_img, R.mipmap.defult_user, R.mipmap.defult_user, user_iv_header, 0)
                             user_tv_name!!.text = t.data!!.nick
+                            Utils.putCache("nickname",t.data!!.nick)
                             Utils.putCache("tel", t.data!!.username)
                             nick = t.data!!.nick!!
                         }
