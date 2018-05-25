@@ -20,6 +20,7 @@ import okhttp3.Response
 import wai.gr.cla.R
 import wai.gr.cla.base.BaseFragment
 import wai.gr.cla.callback.JsonCallback
+import wai.gr.cla.method.GlideImgManager
 import wai.gr.cla.method.Utils
 import wai.gr.cla.method.common
 import wai.gr.cla.model.LzyResponse
@@ -193,7 +194,7 @@ class UserFragment : BaseFragment() {
         val key_qq = Utils.getCache(key.KEY_QQ)
         //login_key或者用户id为空说明已退出登录
         if (TextUtils.isEmpty(pwd) && TextUtils.isEmpty(key_wx) && TextUtils.isEmpty(key_qq)) {
-//            GlideImgManager.glideLoader(MainActivity.main, "", R.mipmap.defult_user, R.mipmap.defult_user, user_iv_header, 0)
+            GlideImgManager.glideLoader(MainActivity.main, "", R.mipmap.defult_user, R.mipmap.defult_user, user_iv_header, 0)
             user_tv_name!!.text = "未登录"
             startActivityForResult(Intent(MainActivity.main, LoginActivity::class.java), 0)
         } else if (TextUtils.isEmpty(school_id)) {//未选择学校
@@ -255,7 +256,7 @@ class UserFragment : BaseFragment() {
                         if (t.code == 0) {
                             url = url().total + t.data!!.head_img
                             gb = t.data!!.guanbi
-//                            GlideImgManager.glideLoader(MainActivity.main, url().total + t.data!!.head_img, R.mipmap.defult_user, R.mipmap.defult_user, user_iv_header, 0)
+                            GlideImgManager.glideLoader(MainActivity.main, url().total + t.data!!.head_img, R.mipmap.defult_user, R.mipmap.defult_user, user_iv_header, 0)
                             user_tv_name!!.text = t.data!!.nick
                             Utils.putCache("tel", t.data!!.username)
                             nick = t.data!!.nick!!
@@ -278,7 +279,7 @@ class UserFragment : BaseFragment() {
 //                        Utils.putCache(key.KEY_WX, "")
 //                        Utils.putCache(key.KEY_QQ, "")
 //                        Utils.putCache(key.KEY_USERID, "")
-//                        GlideImgManager.glideLoader(MainActivity.main, "", R.mipmap.defult_user, R.mipmap.defult_user, user_iv_header, 0)
+                        GlideImgManager.glideLoader(MainActivity.main, "", R.mipmap.defult_user, R.mipmap.defult_user, user_iv_header, 0)
 //                        user_tv_name!!.text = "未登录"
                         //MainActivity.main!!.toast(common().toast_error(e!!))
 

@@ -13,12 +13,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
+
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 import wai.gr.cla.R;
+import wai.gr.cla.ui.MainActivity;
 
 
 /**
@@ -201,7 +202,7 @@ public class CommonViewHolder {
     public CommonViewHolder setGlideImage(int vid, String url) {
         ImageView img = getView(vid);
         if (mContext != null) {
-//            GlideImgManager.glideLoader(mContext, url, R.mipmap.denglu_logo, R.mipmap.denglu_logo, img, 0);
+            GlideImgManager.glideLoader(mContext, url, R.mipmap.denglu_logo, R.mipmap.denglu_logo, img, 0);
         }
         return this;
     }
@@ -209,7 +210,7 @@ public class CommonViewHolder {
     public CommonViewHolder setGlideImageYuan(int vid, String url) {
         ImageView img = getView(vid);
         if (mContext != null) {
-//            GlideImgManager.glideLoader(mContext, url, R.mipmap.error_yuan1, R.mipmap.error_yuan1, img, 0);
+            GlideImgManager.glideLoader(mContext, url, R.mipmap.error_yuan1, R.mipmap.error_yuan1, img, 0);
         }
         return this;
     }
@@ -217,24 +218,23 @@ public class CommonViewHolder {
     //方形圆角
     public CommonViewHolder setRoundImage(int vid, String url) {
         ImageView img = getView(vid);
-//        GlideImgManager.glideLoader(mContext, url, R.mipmap.error_img_sml, R.mipmap.error_img_sml, img, 1);
+        GlideImgManager.glideLoader(mContext, url, R.mipmap.error_img_sml, R.mipmap.error_img_sml, img, 1);
         return this;
     }
     public CommonViewHolder setTopRoundImage(int vid,String url){
         ImageView img = getView(vid);
-
-//        Glide.with(mContext)
-//                .load(url)
-//                //                .bitmapTransform(new GrayscaleTransformation(this))//带灰色蒙层
-//                .bitmapTransform(new RoundedCornersTransformation(mContext, 10, 0,
-//                        RoundedCornersTransformation.CornerType.TOP))
-//                .into(img);
+        Glide.with(mContext)
+                .load(url)
+                //                .bitmapTransform(new GrayscaleTransformation(this))//带灰色蒙层
+                .bitmapTransform(new RoundedCornersTransformation(mContext, 10, 0,
+                        RoundedCornersTransformation.CornerType.TOP))
+                .into(img);
         return this;
     }
     //方形圆角
     public CommonViewHolder setSmallRoundImage(int vid, String url) {
         ImageView img = getView(vid);
-//        GlideImgManager.glideLoader(mContext, url, R.mipmap.error_img_sml, R.mipmap.error_img_sml, img, 1);
+        GlideImgManager.glideLoader(mContext, url, R.mipmap.error_img_sml, R.mipmap.error_img_sml, img, 1);
         return this;
     }
 
@@ -242,7 +242,7 @@ public class CommonViewHolder {
     public CommonViewHolder setRoundFangImage(int vid, String url) {
         ImageView img = getView(vid);
         if (mContext != null) {
-//            GlideImgManager.glideLoader(mContext, url, R.mipmap.error_img_sml, R.mipmap.error_img_sml, img, 2);
+            GlideImgManager.glideLoader(mContext, url, R.mipmap.error_img_sml, R.mipmap.error_img_sml, img, 2);
         }
         return this;
     }

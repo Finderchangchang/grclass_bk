@@ -85,7 +85,7 @@ class TestListActivity : BaseActivity() {
                     MainActivity.main!!.toast("请先登录")
                 } else {
                     startActivity(Intent(MainActivity.main, WebActivity::class.java).putExtra("name", "position")
-                            .putExtra("url", url().normal + "analog/analog_phone_detail&id=" + test_list!![position].id + "&uid=" + user_id)
+                            .putExtra("url", url().normal + "exam/exam_phone_detail&id=" + test_list!![position].id + "&uid=" + user_id)
                             .putExtra("title", "考试详情"))
                 }
             }

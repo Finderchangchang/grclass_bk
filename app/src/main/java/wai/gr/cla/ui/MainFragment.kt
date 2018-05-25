@@ -22,6 +22,8 @@ import wai.gr.cla.method.*
 import wai.gr.cla.model.*
 import java.util.*
 import android.view.*
+import com.bumptech.glide.Glide
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
 
 /**
@@ -70,7 +72,7 @@ class MainFragment : BaseFragment() {
                     holder.setText(R.id.tag_tv, model.title)
                     holder.setTopRoundImage(R.id.tag_iv, url().total + model.thumbnail)
                     if (model.price == "0.00" || model.price == "0") {
-                        holder.setText(R.id.price_tv, "直播")
+                        holder.setText(R.id.price_tv, "免费")
                     } else {
                         holder.setText(R.id.price_tv, "￥" + model.price)
                     }
@@ -81,7 +83,7 @@ class MainFragment : BaseFragment() {
                     holder.setText(R.id.tag_tv, model.title)
                     holder.setTopRoundImage(R.id.tag_iv, url().total + model.thumbnail)
                     if (model.price.equals("0.00") || model.price.equals("0")) {
-                        holder.setText(R.id.price_tv, "直播")
+                        holder.setText(R.id.price_tv, "免费")
                     } else {
                         holder.setText(R.id.price_tv, "￥" + model.price)
                     }
@@ -92,7 +94,7 @@ class MainFragment : BaseFragment() {
                     holder.setText(R.id.tag_tv, model.title)
                     holder.setTopRoundImage(R.id.tag_iv, url().total + model.thumbnail)
                     if (model.price.equals("0.00") || model.price.equals("0")) {
-                        holder.setText(R.id.price_tv, "直播")
+                        holder.setText(R.id.price_tv, "免费")
                     } else {
                         holder.setText(R.id.price_tv, "￥" + model.price)
                     }
@@ -279,7 +281,7 @@ class MainFragment : BaseFragment() {
                 MainActivity.main!!.toast("请先登录")
             } else {
                 startActivity(Intent(MainActivity.main, WebActivity::class.java).putExtra("name", "position")
-                        .putExtra("url", url().normal + "analog/analog_phone_detail&id=" + ks_list!![position].id + "&uid=" + user_id)
+                        .putExtra("url", url().normal + "exam/exam_phone_detail&id=" + ks_list!![position].id + "&uid=" + user_id)
                         .putExtra("title", "考试详情"))
             }
         }

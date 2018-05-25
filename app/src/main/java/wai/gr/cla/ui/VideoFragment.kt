@@ -88,7 +88,7 @@ class VideoFragment() : Fragment() {
         val yxq_tv = view.findViewById<TextView>(R.id.yxq_tv) as TextView//有效期
         val ks_tv = view.findViewById<TextView>(R.id.ks_tv) as TextView//课时
         val bf_tv1 = view.findViewById<TextView>(R.id.bf_tv1) as TextView//播放次数文字
-        bf_tv1.visibility=View.GONE
+        bf_tv1.visibility = View.GONE
         val bf_tv = view.findViewById<TextView>(R.id.bf_tv) as TextView//播放次数
 
         val ml_lv_fl = view.findViewById<FrameLayout>(R.id.ml_lv_fl) as FrameLayout//评论列表
@@ -103,11 +103,11 @@ class VideoFragment() : Fragment() {
                 main_srl.visibility = View.VISIBLE
                 ml_pl_lv!!.visibility = View.VISIBLE
                 ml_lv_fl.visibility = View.VISIBLE
-//                if (DetailPlayer.main != null) {
-//                    GlideImgManager.glideLoader(DetailPlayer.main!!, url().total + mo!!.thumbnail, R.mipmap.error_img_sml, R.mipmap.error_img_sml, user_iv, 0)
-//                }else{
-//                GlideImgManager.glideLoader(App.context, url().total + mo!!.thumbnail, R.mipmap.error_img_sml, R.mipmap.error_img_sml, user_iv, 0)
-//                }
+                if (DetailPlayer.main != null) {
+                    GlideImgManager.glideLoader(DetailPlayer.main!!, url().total + mo!!.thumbnail, R.mipmap.error_img_sml, R.mipmap.error_img_sml, user_iv, 0)
+                } else {
+                    GlideImgManager.glideLoader(App.context, url().total + mo!!.thumbnail, R.mipmap.error_img_sml, R.mipmap.error_img_sml, user_iv, 0)
+                }
 
                 teacher_name_tv.text = "讲师：" + mo!!.lecturer
                 teacher_detail_tv.text = mo!!.forwho
@@ -124,8 +124,8 @@ class VideoFragment() : Fragment() {
                 }
                 //直播
                 if (DetailPlayer.main!!.is_live) {
-                    bf_tv1.visibility=View.VISIBLE
-                    bf_tv.text = mo?.cdate?.substring(0,10)+"~"+mo?.mdate?.substring(0,10)
+                    bf_tv1.visibility = View.VISIBLE
+                    bf_tv.text = mo?.cdate?.substring(0, 10) + "~" + mo?.mdate?.substring(0, 10)
                     ks_tv.text = "购课总名额：" + mo!!.buy_max_num + " 剩余名额：" + mo!!.buy_num
                     yxq_tv.visibility = View.GONE
                 } else {

@@ -17,7 +17,7 @@ import wai.gr.cla.ui.ZBFragment
  */
 
 class VideoAdapter(fm: FragmentManager, kk: TuiJianModel) : FragmentPagerAdapter(fm) {
-    internal val mo = kk
+    private val mo = kk
     override fun getItem(position: Int): Fragment {
         return VideoFragment(position, mo)
     }
@@ -27,10 +27,10 @@ class VideoAdapter(fm: FragmentManager, kk: TuiJianModel) : FragmentPagerAdapter
     }
 
     override fun getPageTitle(position: Int): CharSequence {
-        when (position) {
-            0 -> return "概述"
-            1 -> return "目录"
-            else -> return "评论"
+        return when (position) {
+            0 -> "概述"
+            1 -> "目录"
+            else -> "评论"
         }
     }
 }
