@@ -107,7 +107,7 @@ class ZBFragment : BaseFragment() {
             tj_adapter = object : CommonAdapter<TuiJianModel>(MainActivity.main!!, tj_list, R.layout.item_sp) {
                 override fun convert(holder: CommonViewHolder, model: TuiJianModel, position: Int) {
                     holder.setText(R.id.tag_tv, model.title)
-                    holder.setText(R.id.price_tv, "直播")
+                    holder.setText(R.id.price_tv, "免费")
                     holder.setTopRoundImage(R.id.tag_iv, url().total + model.thumbnail)
                 }
             }

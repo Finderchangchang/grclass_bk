@@ -59,7 +59,7 @@ class MyOrderGVListActivity : BaseActivity() {
                 holder.setText(R.id.tag_tv, model.title)
                 holder.setTopRoundImage(R.id.tag_iv, url().total + model.thumbnail)
                 if (model.price.equals("0.00") || model.price.equals("0")) {
-                    holder.setText(R.id.price_tv, "直播")
+                    holder.setText(R.id.price_tv, "免费")
                 } else {
                     holder.setText(R.id.price_tv, "￥" + model.price)
                 }

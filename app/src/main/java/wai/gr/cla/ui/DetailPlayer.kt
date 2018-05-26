@@ -61,7 +61,7 @@ class DetailPlayer : BaseActivity() {
     private var roomAlias: String? = null
     private var loginId: String = Utils.getCache(key.KEY_USERID)
     var model: TuiJianModel? = null
-    var is_live = false
+    public var is_live = false
     internal var downloadManager: DownloadManager? = null
 
     companion object {

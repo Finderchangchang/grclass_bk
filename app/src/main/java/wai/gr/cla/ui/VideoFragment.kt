@@ -118,7 +118,7 @@ class VideoFragment() : Fragment() {
                 desc_tv.text = mo!!.summary
                 jdesc_tv!!.text = "适合学员：" + mo!!.forwho
 
-                var plnum = 0;
+                var plnum = 0
                 if (pl_list != null) {
                     plnum = pl_list!!.size
                 }
@@ -155,8 +155,10 @@ class VideoFragment() : Fragment() {
                     if (TextUtils.isEmpty(user_id)) {
                         DetailPlayer.main!!.toast("请先登录")
                     } else {
-                        if (mo!!.videos!!.isNotEmpty()) {
-                            startActivityForResult(Intent(DetailPlayer.main, AddAskActivity::class.java).putExtra("course_id", mo!!.videos!![center_click].course_id), 1)
+                        if (mo!!.videos!!.isNotEmpty()||DetailPlayer!!.main!!.is_live) {
+//                            startActivityForResult(Intent(DetailPlayer.main, AddAskActivity::class.java).putExtra("course_id", mo!!.videos!![center_click].course_id), 1)
+                            startActivityForResult(Intent(DetailPlayer.main, AddAskActivity::class.java).putExtra("course_id", DetailPlayer!!.main?.ss), 1)
+
                         } else {
                             DetailPlayer.main!!.toast("当前无法评论")
                         }

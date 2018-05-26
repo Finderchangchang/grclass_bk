@@ -49,7 +49,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="直播"
+                        android:text="免费"
                         android:layout_marginLeft="5dp"
                         android:textColor="@color/huang_bg"
                         android:textSize="10sp" />

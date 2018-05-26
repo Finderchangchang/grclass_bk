@@ -29,7 +29,6 @@ import tv.buka.roomSdk.BukaRoomSDK
 class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
-
         BukaRoomSDK.initSDK("1", false, applicationContext)
         context = applicationContext
         CrashReport.initCrashReport(context, "dfdc0e4c04", false)

@@ -19,10 +19,7 @@ import okhttp3.Response
 import wai.gr.cla.R
 import wai.gr.cla.base.BaseActivity
 import wai.gr.cla.callback.JsonCallback
-import wai.gr.cla.method.BottomPopup
-import wai.gr.cla.method.UpdateNameDialog
-import wai.gr.cla.method.Utils
-import wai.gr.cla.method.common
+import wai.gr.cla.method.*
 import wai.gr.cla.model.LzyResponse
 import wai.gr.cla.model.UserModel
 import wai.gr.cla.model.url
@@ -83,7 +80,7 @@ class UserDetailActivity : BaseActivity() {
             builder.create().show()
         }
         tv_name.text = name
-//        GlideImgManager.glideLoader(this@UserDetailActivity, intent.getStringExtra("img_url"), R.mipmap.error_yuan, R.mipmap.error_yuan, iv_head, 0)
+        GlideImgManager.glideLoader(this@UserDetailActivity, intent.getStringExtra("img_url"), R.mipmap.error_yuan, R.mipmap.error_yuan, iv_head, 0)
         bottomPopup!!.setOnSelectClickListener(object : BottomPopup.OnSelectClickListener {
             override fun onFirst(v: View) {
                 startCamera(11);

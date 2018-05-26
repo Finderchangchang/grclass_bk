@@ -52,7 +52,7 @@ class JYFragment : BaseFragment() {
                 holder.setText(R.id.tag_tv, model.title)
                 holder.setTopRoundImage(R.id.tag_iv, url().total + model.thumbnail)
                 if (model.price.equals("0.00") || model.price.equals("0")) {
-                    holder.setText(R.id.price_tv, "直播")
+                    holder.setText(R.id.price_tv, "免费")
                 } else {
                     holder.setText(R.id.price_tv, "￥" + model.price)
                 }
@@ -126,12 +126,15 @@ class JYFragment : BaseFragment() {
             run {
                 val intent = Intent(MainActivity.main, DetailPlayer::class.java)
                 intent.putExtra("cid", tj_list[i].id)
-                intent.putExtra("is_live", true)
+                when (position) {
+                    5 -> intent.putExtra("is_live", true)
+                    else -> intent.putExtra("is_live", false)
+                }
                 startActivity(intent)
             }
         }
         title_gv?.adapter = title_adapter
-        title_gv!!.setOnItemClickListener { adapterView, view, i, l ->
+        title_gv!!.setOnItemClickListener { _, _, i, _ ->
             if (!title_list[i].click) {//没点击的才执行
                 for (model in title_list) {
                     model.click = false
@@ -189,7 +192,7 @@ class JYFragment : BaseFragment() {
                         tj_list.addAll(t.data!!.list as MutableList<CoursesModel>)
                         tj_adapter!!.refresh(tj_list)
                         main_lv?.getIndex(page_index, 20, t.data!!.count)
-                        //main_srl.isRefreshing = false
+                        main_srl?.isRefreshing = false
 
                         if (tj_list.size == 0) {
                             //error_ll.visibility = View.VISIBLE;

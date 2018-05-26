@@ -133,7 +133,7 @@ class MyOrderListActivity : BaseActivity() {
                         holder.setGlideImage(R.id.user_iv, url().total + model.user!!.head_img)
                         //http://pic.58pic.com/58pic/14/27/45/71r58PICmDM_1024.jpg
                         ///GlideImgManager.glideLoader(MainActivity.main, "http://p1.qzone.la/upload/3/c8e1arir.jpg", R.mipmap.cursevideo_share_qq, R.mipmap.cursevideo_share_qq, user_iv_header, 0)
-                        //holder.setGlideImage(R.id.item_user_PLheader, "http://p1.qzone.la/upload/3/c8e1arir.jpg")
+                        holder.setGlideImage(R.id.item_user_PLheader, "http://p1.qzone.la/upload/3/c8e1arir.jpg")
                         holder.setText(R.id.count_tv, model.content)
                         holder.setText(R.id.user_name_tv, model.user!!.nick)
                         holder.setText(R.id.time_tv, model.cdate)
