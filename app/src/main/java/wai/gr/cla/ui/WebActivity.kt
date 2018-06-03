@@ -13,9 +13,6 @@ import wai.gr.cla.method.Utils
 import wai.gr.cla.model.key
 
 
-
-
-
 /**
  * 加载web的内容
  * */
@@ -56,9 +53,9 @@ class WebActivity : BaseActivity() {
                 val builder = AlertDialog.Builder(this@WebActivity)
                 builder.setTitle("提示")
                 builder.setMessage(message)
-                builder.setPositiveButton("确定"){dialog, which->
-                                result.confirm()
-                            }
+                builder.setPositiveButton("确定") { dialog, which ->
+                    result.confirm()
+                }
 
                 builder.setCancelable(false)
                 builder.create()
@@ -79,7 +76,9 @@ class WebActivity : BaseActivity() {
     }
 
     override fun onPause() {
-        web.destroy()
+        if (!title.equals("考试详情")) {
+            web.destroy()
+        }
         super.onPause()
     }
 }

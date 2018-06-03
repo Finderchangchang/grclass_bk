@@ -32,7 +32,6 @@ class JYFragment : BaseFragment() {
     internal var tj_adapter: CommonAdapter<CoursesModel>? = null
     var tj_list = ArrayList<CoursesModel>()
     var position = 5//cid=5就业，cid=4创业
-    var title_gv: GridView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,29 +62,22 @@ class JYFragment : BaseFragment() {
 
     var cid = ""
     var is_click: Boolean = false//右侧按钮是否点击
-    var main_lv: LoadGridView? = null
-    var main_sl: ScrollView? = null
+    var main_lv: OnlyLoadGridView? = null
     internal var main_srl: SwipeRefreshLayout? = null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.frag_job, container, false)
         val jy_btn = view.findViewById<TextView>(R.id.jy_btn) as TextView
         val cy_btn = view.findViewById<TextView>(R.id.cy_btn) as TextView
         main_srl = view.findViewById<SwipeRefreshLayout>(R.id.main_srl) as SwipeRefreshLayout
-        val have_project_ll = view.findViewById<LinearLayout>(R.id.have_project_ll) as LinearLayout
-        main_lv = view.findViewById<LoadGridView>(R.id.main_lv) as LoadGridView
-        val input_btn = view.findViewById<Button>(R.id.input_btn) as Button
-        main_sl = view.findViewById<ScrollView>(R.id.main_sl) as ScrollView
-        title_gv = view.findViewById<GridView>(R.id.title_gv) as GridView
+        main_lv = view.findViewById<OnlyLoadGridView>(R.id.main_lv) as OnlyLoadGridView
 
         jy_btn.setOnClickListener {
             jy_btn.setBackgroundResource(R.drawable.title_tg_click)
             jy_btn.setTextColor(resources.getColor(R.color.white))
             cy_btn.setTextColor(resources.getColor(R.color.login_bg))
             cy_btn.setBackgroundColor(resources.getColor(R.color.white))
-            have_project_ll.visibility = View.GONE
             position = 5
             page_index = 1
-            title_gv!!.visibility = View.GONE
             click_refresh()
         }
         cy_btn.setOnClickListener {
@@ -96,7 +88,6 @@ class JYFragment : BaseFragment() {
 //            if (("0").equals(Utils.getCache(key.KEY_IS_POST))) {
 //                have_project_ll.visibility = View.VISIBLE
 //            }
-            title_gv!!.visibility = View.GONE
             position = 4
             page_index = 1
             initData()
@@ -105,14 +96,6 @@ class JYFragment : BaseFragment() {
         main_lv!!.setInterface {
             page_index++
             initData()
-        }
-        //填写创业信息
-        input_btn.setOnClickListener {
-            AddChuangYePopuwindow(MainActivity.main!!, have_project_ll)
-        }
-        //解决下拉刷新和scrollview冲突的问题
-        main_sl!!.viewTreeObserver.addOnScrollChangedListener {
-            main_srl!!.isEnabled = main_sl!!.scrollY === 0
         }
         main_srl!!.setOnRefreshListener {
             page_index = 1
@@ -131,24 +114,6 @@ class JYFragment : BaseFragment() {
                     else -> intent.putExtra("is_live", false)
                 }
                 startActivity(intent)
-            }
-        }
-        title_gv?.adapter = title_adapter
-        title_gv!!.setOnItemClickListener { _, _, i, _ ->
-            if (!title_list[i].click) {//没点击的才执行
-                for (model in title_list) {
-                    model.click = false
-                }
-                title_list[i].click = !title_list[i].click
-                title_adapter!!.refresh(title_list)
-                //查询全部的情况
-                if (i == 0) {
-                    cid = ""
-                } else {
-                    cid = title_list[i].cid.toString()
-                }
-                page_index = 1
-                click_refresh()
             }
         }
         initTitle()
@@ -235,7 +200,6 @@ class JYFragment : BaseFragment() {
                             tj_list.addAll(t.data!!.list!!)
                             main_lv!!.getIndex(page_index, 20, tj_list.size)
                             tj_adapter!!.refresh(tj_list)
-                            main_sl!!.fullScroll(ScrollView.FOCUS_UP)
                         } else {
                             MainActivity.main!!.toast(t.msg.toString())
                         }

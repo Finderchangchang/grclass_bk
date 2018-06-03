@@ -17,8 +17,8 @@ android {
         applicationId "wai.gr.cla"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 12
-        versionName "3.0"
+        versionCode 14
+        versionName "3.1"
         ndk {
             //APP的build.gradle设置支持的SO库架构
             abiFilters 'armeabi', 'armeabi-v7a', 'x86'
@@ -132,7 +132,7 @@ dependencies {
     compile 'liji.library.dev:citypickerview:2.0.1'
     compile 'com.github.chihane:JDAddressSelector:1.1.3'
     compile 'liji.library.dev:citypickerview:2.0.1'
-    compile(name: 'roomsdk_5.1.2', ext: 'aar')
+    compile(name: 'roomsdk_5.1.3', ext: 'aar')
 
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
