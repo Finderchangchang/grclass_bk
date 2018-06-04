@@ -95,7 +95,11 @@ class JYFragment : BaseFragment() {
         main_lv!!.adapter = tj_adapter
         main_lv!!.setInterface {
             page_index++
-            initData()
+            if (position == 5) {
+                click_refresh()
+            } else {
+                initData()
+            }
         }
         main_srl!!.setOnRefreshListener {
             page_index = 1
