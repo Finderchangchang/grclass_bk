@@ -95,10 +95,10 @@ class MyOrderGVListActivity : BaseActivity() {
                 toolbar.setRighttv("编辑")
                 toolbar.setRightClick {
                     if (IsEdit) {
-                        IsEdit = false;
+                        IsEdit = false
                         toolbar.setRighttv("编辑")
                     } else {
-                        IsEdit = true;
+                        IsEdit = true
                         toolbar.setRighttv("取消")
                     }
                     load6();
@@ -148,7 +148,13 @@ class MyOrderGVListActivity : BaseActivity() {
 //         //   startActivity(Intent(this, DetailPlayer::class.java).putExtra("cid", sp2_list!![position].id).putExtra("is_live", true))
 //        //}
             when (which) {
-                4 -> startActivity(Intent(this, DetailPlayer::class.java).putExtra("is_live", true).putExtra("cid", sp2_list!![position].id))
+                4 -> {
+                    var is_live = false
+                    if (free == "3") is_live = true
+                    startActivity(Intent(this, DetailPlayer::class.java)
+                            .putExtra("is_live", is_live)
+                            .putExtra("cid", sp2_list!![position].id))
+                }
                 else -> startActivity(Intent(this, DetailPlayer::class.java).putExtra("is_live", true).putExtra("cid", sc6_list!![position].course!!.id))
             }
         }

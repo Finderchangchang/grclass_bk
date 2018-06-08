@@ -262,7 +262,8 @@ class MainFragment : BaseFragment() {
             main_srl!!.isRefreshing = false
             initData()
         }
-        live_more_tv.setOnClickListener{
+        //直播
+        live_more_tv.setOnClickListener {
             startActivity(Intent(MainActivity.main, MyOrderGVListActivity::class.java)
                     .putExtra("which_more", 1)
                     .putExtra("which", 4)
