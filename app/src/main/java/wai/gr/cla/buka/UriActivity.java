@@ -3,6 +3,7 @@ package wai.gr.cla.buka;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -56,6 +57,9 @@ public class UriActivity extends AppCompatActivity {
     //@OnClick(R.id.button3)
     public void onViewClicked() {
         name = getIntent().getStringExtra("nick_name");
+        if(TextUtils.isEmpty(name)){
+           name="";
+        }
         token = "guanren";
         roomAlias = getIntent().getStringExtra("room_id");
         role = "2";
