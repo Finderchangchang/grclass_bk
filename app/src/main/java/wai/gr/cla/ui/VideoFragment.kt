@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.lzy.okgo.OkGo
+import kotlinx.android.synthetic.main.activity_main1.*
 import okhttp3.Call
 import okhttp3.Response
 import wai.gr.cla.R
@@ -108,8 +109,11 @@ class VideoFragment() : Fragment() {
                 } else {
                     GlideImgManager.glideLoader(App.context, url().total + mo!!.thumbnail, R.mipmap.error_img_sml, R.mipmap.error_img_sml, user_iv, 0)
                 }
-
-                teacher_name_tv.text = "讲师：" + mo!!.lecturer
+                var t_name = mo!!.lecturer
+                if (TextUtils.isEmpty(t_name)) {
+                    t_name = ""
+                }
+                teacher_name_tv.text = "讲师：" + t_name
                 teacher_detail_tv.text = mo!!.forwho
                 if (TextUtils.isEmpty(mo!!.summary)) {
                     mo!!.summary = "无"
@@ -125,14 +129,20 @@ class VideoFragment() : Fragment() {
                 //直播
                 if (DetailPlayer.main!!.is_live) {
                     bf_tv1.visibility = View.VISIBLE
-                    bf_tv.text = mo?.cdate?.substring(0, 10) + "~" + mo?.mdate?.substring(0, 10)
-                    ks_tv.text = "购课总名额：" + mo!!.buy_max_num + " 剩余名额：" + mo!!.buy_num
+                    bf_tv.text = mo?.start_date + "~" + mo?.end_date
+                    if (mo?.zhibo_type == 0) {//0.大班课：1.小班课
+                        ks_tv.visibility = View.INVISIBLE
+                    } else {
+                        ks_tv.visibility = View.VISIBLE
+                    }
+                    ks_tv.text = "购课总名额：" + mo!!.buy_max_num + " 剩余名额：" + mo!!.shengyu_num
                     yxq_tv.visibility = View.GONE
                 } else {
                     bf_tv.text = "播放：" + mo!!.dots + "次 评论：" + mo!!.comment_num + " 购买数：" + mo!!.buy_num
                     yxq_tv.text = "有效期：自购买之日起" + mo!!.valid_year + "年"
                     ks_tv.text = "课时：" + mo!!.videos!!.size + "讲"
                     yxq_tv.visibility = View.VISIBLE
+                    ks_tv.visibility = View.VISIBLE
                 }
                 if (!DetailPlayer.main!!.is_live) {
                     OkGo.post(url().public_api + "get_course_comment_nums")
@@ -155,7 +165,7 @@ class VideoFragment() : Fragment() {
                     if (TextUtils.isEmpty(user_id)) {
                         DetailPlayer.main!!.toast("请先登录")
                     } else {
-                        if (mo!!.videos!!.isNotEmpty()||DetailPlayer!!.main!!.is_live) {
+                        if (mo!!.videos!!.isNotEmpty() || DetailPlayer!!.main!!.is_live) {
 //                            startActivityForResult(Intent(DetailPlayer.main, AddAskActivity::class.java).putExtra("course_id", mo!!.videos!![center_click].course_id), 1)
                             startActivityForResult(Intent(DetailPlayer.main, AddAskActivity::class.java).putExtra("course_id", DetailPlayer!!.main?.ss), 1)
 

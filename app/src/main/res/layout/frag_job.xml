@@ -54,61 +54,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
-            android:id="@+id/main_sl"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-
-                <LinearLayout
-                    android:id="@+id/have_project_ll"
-                    android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:background="@color/main_bg"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="填写创意项目,有机会获得冠人教育创业支持！"
-                        android:textColor="@color/juhuang_zi"
-                        android:textSize="16sp" />
-
-                    <Button
-                        android:id="@+id/input_btn"
-                        android:layout_width="100dp"
-                        android:layout_height="32dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/bg_button_juhang"
-                        android:text="我要填写"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp" />
-                </LinearLayout>
-                <wai.gr.cla.method.OnlyMeasureGridView
-                    android:id="@+id/title_gv"
-                    android:numColumns="5"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:visibility="gone"/>
-                <wai.gr.cla.method.LoadGridView
+                <wai.gr.cla.method.OnlyLoadGridView
                     android:id="@+id/main_lv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:numColumns="3" />
 
-            </LinearLayout>
-
-        </ScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

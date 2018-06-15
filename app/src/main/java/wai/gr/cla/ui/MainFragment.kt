@@ -262,8 +262,13 @@ class MainFragment : BaseFragment() {
             main_srl!!.isRefreshing = false
             initData()
         }
-        live_more_tv.setOnClickListener{
-            startActivity(Intent(MainActivity.main, LiveListActivity::class.java))
+        //直播
+        live_more_tv.setOnClickListener {
+            startActivity(Intent(MainActivity.main, MyOrderGVListActivity::class.java)
+                    .putExtra("which_more", 1)
+                    .putExtra("which", 4)
+                    .putExtra("free", "3"))//加载更多视频
+            //startActivity(Intent(MainActivity.main, LiveListActivity::class.java))
         }
         val mLists = ArrayList<SchoolModel>()
         right_iv.setOnClickListener {
@@ -287,7 +292,10 @@ class MainFragment : BaseFragment() {
         }
         tj_more_tv.setOnClickListener {
             //更多视频列表
-            startActivity(Intent(MainActivity.main, MyOrderGVListActivity::class.java).putExtra("which_more", 1).putExtra("which", 4).putExtra("free", "0"))//加载更多视频
+            startActivity(Intent(MainActivity.main, MyOrderGVListActivity::class.java)
+                    .putExtra("which_more", 1)
+                    .putExtra("which", 4)
+                    .putExtra("free", "0"))//加载更多视频
         }
         //更多资质证
         dy_tv.setOnClickListener {

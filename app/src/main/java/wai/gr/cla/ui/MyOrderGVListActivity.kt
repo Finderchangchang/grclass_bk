@@ -43,7 +43,7 @@ class MyOrderGVListActivity : BaseActivity() {
     }
 
     var zx_id = 0//传递过来的资讯的id
-    var free:String = ""
+    var free: String = ""
     override fun initViews() {
         which = intent.getIntExtra("which", 1)
         which_more = intent.getIntExtra("which_more", 0)
@@ -71,7 +71,8 @@ class MyOrderGVListActivity : BaseActivity() {
                     when (free) {
                         "1" -> toolbar.setCentertv("讲座直播")
                         "0" -> toolbar.setCentertv("更多精品课")
-                        "2"->toolbar.setCentertv("更多资格证考试")
+                        "2" -> toolbar.setCentertv("更多资格证考试")
+                        "3" -> toolbar.setCentertv("更多直播课")
                     }
                 } else {
                     toolbar.setCentertv("我的课程")
@@ -94,10 +95,10 @@ class MyOrderGVListActivity : BaseActivity() {
                 toolbar.setRighttv("编辑")
                 toolbar.setRightClick {
                     if (IsEdit) {
-                        IsEdit = false;
+                        IsEdit = false
                         toolbar.setRighttv("编辑")
                     } else {
-                        IsEdit = true;
+                        IsEdit = true
                         toolbar.setRighttv("取消")
                     }
                     load6();
@@ -147,7 +148,13 @@ class MyOrderGVListActivity : BaseActivity() {
 //         //   startActivity(Intent(this, DetailPlayer::class.java).putExtra("cid", sp2_list!![position].id).putExtra("is_live", true))
 //        //}
             when (which) {
-                4 -> startActivity(Intent(this, DetailPlayer::class.java).putExtra("is_live", true).putExtra("cid", sp2_list!![position].id))
+                4 -> {
+                    var is_live = false
+                    if (free == "3") is_live = true
+                    startActivity(Intent(this, DetailPlayer::class.java)
+                            .putExtra("is_live", is_live)
+                            .putExtra("cid", sp2_list!![position].id))
+                }
                 else -> startActivity(Intent(this, DetailPlayer::class.java).putExtra("is_live", true).putExtra("cid", sc6_list!![position].course!!.id))
             }
         }
@@ -168,31 +175,35 @@ class MyOrderGVListActivity : BaseActivity() {
             sp2_list.clear()
         }
         if (which_more == 1) {//加载更多视频
-            OkGo.post(url().public_api + "get_phone_recommend_course_list")
+            var okgo = OkGo.post(url().public_api + "get_phone_recommend_course_list")
                     .params("page", page_index)
                     .params("free", free)
-                    .execute(object : JsonCallback<LzyResponse<PageModel<CoursesModel>>>() {
-                        override fun onSuccess(t: LzyResponse<PageModel<CoursesModel>>, call: okhttp3.Call?, response: okhttp3.Response?) {
-                            sp2_list.addAll(t.data!!.list as MutableList<CoursesModel>)
-                            sp2_adapter!!.refresh(sp2_list)
-                            main_gv.getIndex(page_index, 20, t.data!!.count)
-                            main_srl.isRefreshing = false
+            if (free.equals("3")) {
+                okgo = OkGo.post(url().public_api + "get_zhibo_course")
+                        .params("page", page_index)
+            }
+            okgo.execute(object : JsonCallback<LzyResponse<PageModel<CoursesModel>>>() {
+                override fun onSuccess(t: LzyResponse<PageModel<CoursesModel>>, call: okhttp3.Call?, response: okhttp3.Response?) {
+                    sp2_list.addAll(t.data!!.list as MutableList<CoursesModel>)
+                    sp2_adapter!!.refresh(sp2_list)
+                    main_gv.getIndex(page_index, 20, t.data!!.count)
+                    main_srl.isRefreshing = false
 
-                            if (sp2_list!!.size == 0) {
-                                error_ll.visibility = View.VISIBLE;
-                                main_gv.visibility = View.GONE;
-                            } else {
-                                error_ll.visibility = View.GONE;
-                                main_gv.visibility = View.VISIBLE;
-                            }
+                    if (sp2_list!!.size == 0) {
+                        error_ll.visibility = View.VISIBLE;
+                        main_gv.visibility = View.GONE;
+                    } else {
+                        error_ll.visibility = View.GONE;
+                        main_gv.visibility = View.VISIBLE;
+                    }
 
-                        }
+                }
 
-                        override fun onError(call: Call?, response: Response?, e: Exception?) {
-                            toast(common().toast_error(e!!))
-                            main_srl.isRefreshing = false
-                        }
-                    })
+                override fun onError(call: Call?, response: Response?, e: Exception?) {
+                    toast(common().toast_error(e!!))
+                    main_srl.isRefreshing = false
+                }
+            })
         } else {
             OkGo.post(url().auth_api + "get_my_courses")
                     .params("page", page_index)

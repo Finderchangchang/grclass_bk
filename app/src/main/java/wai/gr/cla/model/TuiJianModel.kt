@@ -28,9 +28,13 @@ class TuiJianModel {
     var status: Int = 0
     var recommend: Int = 0
     var dots: Int = 0
-    var room_id=""
+    var room_id = ""
     var expire_time = ""
     var buy_max_num: Int = 0
+    var shengyu_num: Int = 0
+    var start_date: String = ""
+    var end_date: String = ""
+    var zhibo_type=0
     var cdate: String = ""
     var mdate: String = ""
     var price_show: String = ""
