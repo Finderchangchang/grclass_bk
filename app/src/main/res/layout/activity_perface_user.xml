@@ -4,29 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context="wai.gr.cla.ui.PerfaceUserActivity">
 
     <net.tsz.afinal.view.TitleBar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/login_bg"
         android:layout_marginBottom="20dp"
+        android:background="@color/login_bg"
 
         app:center_tv="完善信息" />
+
     <TextView
         android:id="@+id/gr_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="完善个人信息"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:textSize="16sp"
+        android:text="完善个人信息"
         android:textColor="@color/hei"
-        android:visibility="gone"/>
+        android:textSize="16sp"
+        android:visibility="gone" />
+
     <LinearLayout
         android:id="@+id/province_ll"
         android:layout_width="match_parent"
@@ -148,6 +150,28 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/kefuma_ll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/main_bg"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/kefuma_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:hint="请填写客服码，方便专属客服为您服务（选填）"
+            android:textColor="#016DB8"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/code_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -214,8 +238,8 @@
         android:layout_height="40dp"
         android:layout_margin="20dp"
         android:background="@drawable/btn_bg_hui"
+        android:enabled="false"
         android:text="提交"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        android:enabled="false"/>
+        android:textSize="18sp" />
 </LinearLayout>

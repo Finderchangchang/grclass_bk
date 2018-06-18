@@ -80,9 +80,11 @@ class PerfaceUserActivity : BaseActivity() {
             is_san = true
             code_ll.visibility = View.VISIBLE
             time_ll.visibility = View.VISIBLE
+
             gr_tv.visibility = View.GONE
         } else if (is_login) {
             time_ll.visibility = View.VISIBLE
+            kefuma_ll.visibility = View.VISIBLE
         }
         toolbar.setLeftClick {
             main_back()//执行退出登录操作
@@ -358,6 +360,7 @@ class PerfaceUserActivity : BaseActivity() {
                     } else if (TextUtils.isEmpty(code_et)) {
                         toast("验证码不能为空")
                     } else {
+                        model!!.kefuma = kefuma_tv.text.toString().trim()
                         model!!.username = tel_str
                         model!!.complete_smscode_val = code_et
                         putData()

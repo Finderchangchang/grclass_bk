@@ -324,8 +324,12 @@ class DetailPlayer : BaseActivity() {
                                     }
                                 }
                             } else {
-                                if (videos?.size!! > 0 && !TextUtils.isEmpty(model?.videos?.get(0)?.name)) {
-                                    play(videos?.get(0)?.url!!, model?.videos?.get(0)?.thumbnail!!, model?.videos?.get(0)?.name!!)
+                                if (videos?.size!! > 0 && (!TextUtils.isEmpty(model?.videos?.get(0)?.name) || !TextUtils.isEmpty(model?.videos?.get(0)?.title))) {
+                                    var title = model?.videos?.get(0)?.name
+                                    if (TextUtils.isEmpty(title)) {
+                                        title = model?.videos?.get(0)?.title
+                                    }
+                                    play(videos?.get(0)?.url!!, model?.videos?.get(0)?.thumbnail, title)
                                 }
                             }
 
@@ -363,58 +367,60 @@ class DetailPlayer : BaseActivity() {
     /**
      * 根据url播放视频
      * */
-    fun play(url: String, img_url: String, title: String) {
-        var url = url
+    fun play(url: String, img_url: String?, title: String?) {
         if (!TextUtils.isEmpty(url)) {
-            url = url.replace(".mp4", ".gr.mp4")
-        }
-        url = url().total + "/fP3m8r/t7Me1e" + url
-        Log.i("url", url)
-        detailPlayer!!.setUp(url, false, null)
-        loadsp(img_url)
-        //外部辅助的旋转，帮助全屏
-        orientationUtils = OrientationUtils(this, detailPlayer)
-        //初始化不打开外部的旋转
-        orientationUtils!!.isEnable = false
-        detailPlayer!!.setIsTouchWiget(true)
-        //detailPlayer.setIsTouchWigetFull(false);
-        //关闭自动旋转
-        detailPlayer!!.isRotateViewAuto = true
-        detailPlayer!!.isLockLand = false
-        detailPlayer!!.isShowFullAnimation = false
-        detailPlayer!!.isNeedLockFull = true
-        detailPlayer!!.title.text = title;
-        //detailPlayer.setOpenPreView(false);
-        detailPlayer!!.fullscreenButton.setOnClickListener { v ->
-            //直接横屏
-            orientationUtils!!.resolveByClick()
-            detailPlayer!!.startWindowFullscreen(this@DetailPlayer, true, true, Utils.getCache("tel"))
-            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-            //highApiEffects(false)
-        }
-        detailPlayer!!.isNeedShowWifiTip = true
-        detailPlayer!!.setStandardVideoAllCallBack(object : SampleListener() {
-            override fun onPrepared(url: String, vararg objects: Any) {
-                super.onPrepared(url, *objects)
-                //开始播放了才能旋转和全屏
-                orientationUtils!!.isEnable = true
-                isPlay = true
+            var url = url
+            if (!TextUtils.isEmpty(url)) {
+                url = url.replace(".mp4", ".gr.mp4")
             }
+            url = url().total + "/fP3m8r/t7Me1e" + url
+            Log.i("url", url)
+            detailPlayer!!.setUp(url, false, null)
+            if (!TextUtils.isEmpty(img_url)) loadsp(img_url!!)
+            //外部辅助的旋转，帮助全屏
+            orientationUtils = OrientationUtils(this, detailPlayer)
+            //初始化不打开外部的旋转
+            orientationUtils!!.isEnable = false
+            detailPlayer!!.setIsTouchWiget(true)
+            //detailPlayer.setIsTouchWigetFull(false);
+            //关闭自动旋转
+            detailPlayer!!.isRotateViewAuto = true
+            detailPlayer!!.isLockLand = false
+            detailPlayer!!.isShowFullAnimation = false
+            detailPlayer!!.isNeedLockFull = true
+            detailPlayer!!.title.text = title;
+            //detailPlayer.setOpenPreView(false);
+            detailPlayer!!.fullscreenButton.setOnClickListener { v ->
+                //直接横屏
+                orientationUtils!!.resolveByClick()
+                detailPlayer!!.startWindowFullscreen(this@DetailPlayer, true, true, Utils.getCache("tel"))
+                window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-            override fun onQuitFullscreen(url: String, vararg objects: Any) {
-                super.onQuitFullscreen(url, *objects)
-                if (orientationUtils != null) {
-                    orientationUtils!!.backToProtVideo()
+                //highApiEffects(false)
+            }
+            detailPlayer!!.isNeedShowWifiTip = true
+            detailPlayer!!.setStandardVideoAllCallBack(object : SampleListener() {
+                override fun onPrepared(url: String, vararg objects: Any) {
+                    super.onPrepared(url, *objects)
+                    //开始播放了才能旋转和全屏
+                    orientationUtils!!.isEnable = true
+                    isPlay = true
                 }
-            }
-        })
+
+                override fun onQuitFullscreen(url: String, vararg objects: Any) {
+                    super.onQuitFullscreen(url, *objects)
+                    if (orientationUtils != null) {
+                        orientationUtils!!.backToProtVideo()
+                    }
+                }
+            })
+        }
         //detailPlayer!!.startPlayLogic()
     }
 
     override fun initEvents() {
-        var width = this.getWindowManager().getDefaultDisplay().getWidth()
-        val linearParams = detailPlayer!!.getLayoutParams() as RelativeLayout.LayoutParams //取控件textView当前的布局参数
+        var width = this.windowManager.defaultDisplay.getWidth()
+        val linearParams = detailPlayer!!.layoutParams as RelativeLayout.LayoutParams //取控件textView当前的布局参数
         linearParams.height = width / 16 * 9
         detailPlayer!!.layoutParams = linearParams
         top_zw_view!!.layoutParams = linearParams

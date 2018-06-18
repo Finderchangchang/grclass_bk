@@ -31,4 +31,6 @@ class VideoModel : Serializable {
     var cdate: String? = null
     var mdate: String? = null
     var check: Boolean = false//点击内容
+    var title = ""
+    var status: Int = 0
 }

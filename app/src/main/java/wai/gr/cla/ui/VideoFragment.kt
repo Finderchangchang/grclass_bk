@@ -52,11 +52,22 @@ class VideoFragment() : Fragment() {
                         holder.setVisible(R.id.yuan_iv, false)
                         holder.setTextColor(R.id.tv, R.color.text_hint)
                     }
-                    var name = model.name
-                    if (model.free == 1) {
-                        name += "[免费]"
+
+                    var title = if (model.free == 1) {
+                        "【免费】"
+                    } else {
+                        when (model.status) {
+                            1 -> {
+                                "【录播】"
+                            }
+                            else -> {
+                                "【直播】"
+                            }
+                        }
                     }
-                    holder.setText(R.id.tv, name)
+                    var name = model.name
+                    if (TextUtils.isEmpty(name)) name = model.title
+                    holder.setText(R.id.tv, title + name)
                 }
             }
             pl_adapter = object : CommonAdapter<PJModel>(DetailPlayer.main, pl_list, R.layout.item_pinglun) {
@@ -215,27 +226,30 @@ class VideoFragment() : Fragment() {
 //                    ml_list = ac.loadData1() as MutableList<VideoModel>?
                     //当前item可以播放，当前视频已购买
                     if (DetailPlayer.main!!.play(position)) {
-                        DetailPlayer.main!!.play(ml_list!![position].url!!, ml_list!![position].thumbnail!!, ml_list!![position].name!!)
-                        ml_list!![center_click].check = false
-                        center_click = position
-                        ml_list!![center_click].check = true
-                        ml_adapter!!.refresh(ml_list)
-                        OkGo.post(url().auth_api + "update_course_percent")
-                                .params("course_id", ml_list!![position].course_id)// 请求方式和请求url
-                                .params("view_num", position + 1)// 请求方式和请求url
-                                .execute(object : JsonCallback<LzyResponse<UserModel>>() {
-                                    override fun onSuccess(t: LzyResponse<UserModel>, call: okhttp3.Call?, response: okhttp3.Response?) {
-                                        if (t.code == 0) {
-                                            Utils.putCache("last_position", position.toString())
-                                        } else {
+                        var video_url = ml_list!![position].url!!
+                        if (!TextUtils.isEmpty(video_url)) {
+                            DetailPlayer.main!!.play(ml_list!![position].url!!, ml_list!![position].thumbnail!!, ml_list!![position].name!!)
+                            ml_list!![center_click].check = false
+                            center_click = position
+                            ml_list!![center_click].check = true
+                            ml_adapter!!.refresh(ml_list)
+                            OkGo.post(url().auth_api + "update_course_percent")
+                                    .params("course_id", ml_list!![position].course_id)// 请求方式和请求url
+                                    .params("view_num", position + 1)// 请求方式和请求url
+                                    .execute(object : JsonCallback<LzyResponse<UserModel>>() {
+                                        override fun onSuccess(t: LzyResponse<UserModel>, call: okhttp3.Call?, response: okhttp3.Response?) {
+                                            if (t.code == 0) {
+                                                Utils.putCache("last_position", position.toString())
+                                            } else {
 
+                                            }
                                         }
-                                    }
 
-                                    override fun onError(call: Call?, response: Response?, e: Exception?) {
-                                        //Toast.makeText(context, "1:"+common().toast_error(e!!), Toast.LENGTH_SHORT).show()
-                                    }
-                                })
+                                        override fun onError(call: Call?, response: Response?, e: Exception?) {
+                                            //Toast.makeText(context, "1:"+common().toast_error(e!!), Toast.LENGTH_SHORT).show()
+                                        }
+                                    })
+                        }
                     } else {
                         DetailPlayer.main!!.toast("请先购买视频")
                     }

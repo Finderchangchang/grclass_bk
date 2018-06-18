@@ -12,7 +12,8 @@ class EditUserModel {
     internal var complete_smscode_val: String = ""
     internal var openid: String = ""
     internal var type: String = ""
-    internal var access_token:String=""
-    internal var qqid:String=""
+    internal var access_token: String = ""
+    internal var qqid: String = ""
+    internal var kefuma = ""
 
 }
