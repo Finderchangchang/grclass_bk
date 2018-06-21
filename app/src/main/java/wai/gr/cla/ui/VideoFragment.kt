@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
+import android.text.Html
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -49,8 +50,9 @@ class VideoFragment() : Fragment() {
                     var name = model.name
                     if (TextUtils.isEmpty(name)) name = model.title
                     var title = ""
+                    holder.setVisible(R.id.is_live_tv,false)
                     if (model.free == 1) {
-                        title ="【免费】" + name
+                        title ="[免费]" + name
                         if (model.check) {//选中
                             holder.setVisible(R.id.yuan_iv, true)
                             holder.setTextColor(R.id.tv, R.color.colorPrimary)
@@ -59,27 +61,27 @@ class VideoFragment() : Fragment() {
                             holder.setTextColor(R.id.tv, R.color.text_hint)
                         }
                     } else {
-                        when (model.sort) {
+                        when (model.status) {
                             1 -> {
-                                title ="【回放】" + name + "(" + model.longtime + ")"
+                                title ="[回放]" + name + "(" + model.longtime + ")"
                                 holder.setTextColor(R.id.tv, R.color.text_hint)
                             }
                             2 -> {
-                                title ="【直播】" + name + "(" + model.zhibo_date + "已结束)"
+                                title ="[回放]" + name + "(" + model.zhibo_date + "已结束)"
                                 holder.setTextColor(R.id.tv, R.color.text_hint)
                             }
                             3 -> {
-                                title ="【直播】" + name + "(" + model.zhibo_date + " 正在直播)"
-                                holder.setTextColor(R.id.tv, R.color.colorPrimary)
+                                holder.setTextColor(R.id.tv, R.color.black)
+                                title ="[直播]" + name + "(" + model.zhibo_date + ")"
+                                holder.setVisible(R.id.is_live_tv,true)
                             }
                             else -> {
-                                holder.setTextColor(R.id.tv, R.color.colorPrimary)
-                                title ="【直播】" + name + "(" + model.zhibo_date + " " + model.start_time + "-" + model.start_time + ")"
+                                holder.setTextColor(R.id.tv, R.color.black)
+                                title ="[直播]" + name + "(" + model.zhibo_date + " " + model.start_time + "-" + model.start_time + ")"
                             }
                         }
                     }
-
-                    holder.setText(R.id.tv, title)
+                    holder.setText(R.id.tv, Html.fromHtml(title))
                 }
             }
             pl_adapter = object : CommonAdapter<PJModel>(DetailPlayer.main, pl_list, R.layout.item_pinglun) {

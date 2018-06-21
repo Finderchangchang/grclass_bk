@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.Spanned;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -110,7 +112,12 @@ public class CommonViewHolder {
         view.setVisibility(View.VISIBLE);
         return this;
     }
-
+    public CommonViewHolder setText(int viewId, Spanned text) {
+        TextView view = getView(viewId);
+        view.setText(text + "");
+        view.setVisibility(View.VISIBLE);
+        return this;
+    }
     public CommonViewHolder setBGText(int viewId, String text) {
         Button view = getView(viewId);
         view.setText(text + "");

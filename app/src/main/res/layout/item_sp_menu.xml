@@ -23,13 +23,28 @@
             android:layout_centerInParent="true"
             android:background="@drawable/bg_button" />
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/tv"
-        android:layout_marginLeft="10dp"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:textSize="14sp"
-        android:text="123" />
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/tv"
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:textSize="14sp"
+            android:text="" />
+        <TextView
+            android:id="@+id/is_live_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正在直播"
+            android:textColor="#ff0000"
+            android:visibility="visible"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+
 </LinearLayout>

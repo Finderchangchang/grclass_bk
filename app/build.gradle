@@ -17,8 +17,8 @@ android {
         applicationId "wai.gr.cla"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 17
-        versionName "3.4"
+        versionCode 18
+        versionName "3.5"
         ndk {
             //APP的build.gradle设置支持的SO库架构
             abiFilters 'armeabi', 'armeabi-v7a', 'x86'
