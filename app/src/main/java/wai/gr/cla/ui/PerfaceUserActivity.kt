@@ -351,6 +351,7 @@ class PerfaceUserActivity : BaseActivity() {
 //                    model!!.school_id = pw!!.position
 //                }
                 model!!.school_start_year = time.split("-")[0]
+                model!!.kefuma = kefuma_tv.text.toString().trim()
                 //toast(is_san.toString() + "is_san" + is_login)
                 if (is_san && is_login) {//第三方登录判断
                     var tel_str = tel_et.text.toString().trim()
@@ -360,7 +361,7 @@ class PerfaceUserActivity : BaseActivity() {
                     } else if (TextUtils.isEmpty(code_et)) {
                         toast("验证码不能为空")
                     } else {
-                        model!!.kefuma = kefuma_tv.text.toString().trim()
+
                         model!!.username = tel_str
                         model!!.complete_smscode_val = code_et
                         putData()
@@ -391,8 +392,9 @@ class PerfaceUserActivity : BaseActivity() {
         } else {
             go = OkGo.post(url().user_api + "modify_user")
             //model!!.username = Utils.getCache(key.KEY_Tel)
-            data = "{\"school_id\":\"" + model!!.school_id + "\"}"
+            data = "{\"school_id\":\"" + model!!.school_id + "\",\"kefuma\":\""+kefuma_tv.text.toString().trim()+"\"}"
         }
+
         go.params("data", data)// 请求方式和请求url
                 .execute(object : JsonCallback<LzyResponse<UserModel>>() {
                     override fun onSuccess(t: LzyResponse<UserModel>, call: okhttp3.Call?, response: okhttp3.Response?) {

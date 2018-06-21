@@ -45,29 +45,41 @@ class VideoFragment() : Fragment() {
         if (DetailPlayer.main != null) {
             ml_adapter = object : CommonAdapter<VideoModel>(DetailPlayer.main, ml_list, R.layout.item_sp_menu) {
                 override fun convert(holder: CommonViewHolder, model: VideoModel, position: Int) {
-                    if (model.check) {//选中
-                        holder.setVisible(R.id.yuan_iv, true)
-                        holder.setTextColor(R.id.tv, R.color.colorPrimary)
-                    } else {
-                        holder.setVisible(R.id.yuan_iv, false)
-                        holder.setTextColor(R.id.tv, R.color.text_hint)
-                    }
 
-                    var title = if (model.free == 1) {
-                        "【免费】"
+                    var name = model.name
+                    if (TextUtils.isEmpty(name)) name = model.title
+                    var title = ""
+                    if (model.free == 1) {
+                        title ="【免费】" + name
+                        if (model.check) {//选中
+                            holder.setVisible(R.id.yuan_iv, true)
+                            holder.setTextColor(R.id.tv, R.color.colorPrimary)
+                        } else {
+                            holder.setVisible(R.id.yuan_iv, false)
+                            holder.setTextColor(R.id.tv, R.color.text_hint)
+                        }
                     } else {
-                        when (model.status) {
+                        when (model.sort) {
                             1 -> {
-                                "【录播】"
+                                title ="【回放】" + name + "(" + model.longtime + ")"
+                                holder.setTextColor(R.id.tv, R.color.text_hint)
+                            }
+                            2 -> {
+                                title ="【直播】" + name + "(" + model.zhibo_date + "已结束)"
+                                holder.setTextColor(R.id.tv, R.color.text_hint)
+                            }
+                            3 -> {
+                                title ="【直播】" + name + "(" + model.zhibo_date + " 正在直播)"
+                                holder.setTextColor(R.id.tv, R.color.colorPrimary)
                             }
                             else -> {
-                                "【直播】"
+                                holder.setTextColor(R.id.tv, R.color.colorPrimary)
+                                title ="【直播】" + name + "(" + model.zhibo_date + " " + model.start_time + "-" + model.start_time + ")"
                             }
                         }
                     }
-                    var name = model.name
-                    if (TextUtils.isEmpty(name)) name = model.title
-                    holder.setText(R.id.tv, title + name)
+
+                    holder.setText(R.id.tv, title)
                 }
             }
             pl_adapter = object : CommonAdapter<PJModel>(DetailPlayer.main, pl_list, R.layout.item_pinglun) {

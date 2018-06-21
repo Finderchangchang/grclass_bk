@@ -25,6 +25,11 @@ class VideoModel : Serializable {
     var course_id: Int = 0
     var name: String? = null
     var number: Int = 0
+    var sort = 0
+    var longtime = ""
+    var zhibo_date = ""
+    var start_time=""
+    var end_time=""
     var url: String? = null
     var thumbnail: String? = null
     var free: Int = 0
