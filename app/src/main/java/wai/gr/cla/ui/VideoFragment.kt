@@ -50,34 +50,42 @@ class VideoFragment() : Fragment() {
                     var name = model.name
                     if (TextUtils.isEmpty(name)) name = model.title
                     var title = ""
-                    holder.setVisible(R.id.is_live_tv,false)
+                    holder.setVisible(R.id.is_live_tv, false)
                     if (model.free == 1) {
-                        title ="[免费]" + name
+                        title = "[免费]" + name
                         if (model.check) {//选中
                             holder.setVisible(R.id.yuan_iv, true)
                             holder.setTextColor(R.id.tv, R.color.colorPrimary)
                         } else {
+                            if(model.status==0){
+                                holder.setTextColor(R.id.tv, R.color.black)
+                            }else{
+                                holder.setTextColor(R.id.tv, R.color.text_hint)
+                            }
                             holder.setVisible(R.id.yuan_iv, false)
-                            holder.setTextColor(R.id.tv, R.color.text_hint)
                         }
                     } else {
                         when (model.status) {
                             1 -> {
-                                title ="[回放]" + name + "(" + model.longtime + ")"
+                                title = "[回放]" + name + "(" + model.longtime + ")"
                                 holder.setTextColor(R.id.tv, R.color.text_hint)
                             }
                             2 -> {
-                                title ="[回放]" + name + "(" + model.zhibo_date + "已结束)"
+                                title = "[回放]" + name + "(" + model.zhibo_date + "已结束)"
                                 holder.setTextColor(R.id.tv, R.color.text_hint)
                             }
                             3 -> {
                                 holder.setTextColor(R.id.tv, R.color.black)
-                                title ="[直播]" + name + "(" + model.zhibo_date + ")"
-                                holder.setVisible(R.id.is_live_tv,true)
+                                title = "[直播]" + name + "(" + model.zhibo_date + ")"
+                                holder.setVisible(R.id.is_live_tv, true)
+                            }
+                            4 -> {
+                                holder.setTextColor(R.id.tv, R.color.black)
+                                title = "[直播]" + name + "(" + model.zhibo_date + " " + model.start_time + "-" + model.start_time + ")"
                             }
                             else -> {
                                 holder.setTextColor(R.id.tv, R.color.black)
-                                title ="[直播]" + name + "(" + model.zhibo_date + " " + model.start_time + "-" + model.start_time + ")"
+                                title = name!!
                             }
                         }
                     }

@@ -187,11 +187,15 @@ class DetailPlayer : BaseActivity() {
             name = Utils.getCache("tel")
             //跳转到直播页面
             if (car_btn.text != "加入书包") {
-                var intent = Intent(main, UriActivity::class.java);
-                intent.putExtra("room_id", roomAlias)
-                intent.putExtra("nick_name", Utils.getCache("nickname"))
-                intent.putExtra("user_id", user_id)
-                startActivity(intent)
+                if (TextUtils.isEmpty(user_id)) {
+                    toast("请先登录")
+                } else {
+                    var intent = Intent(main, UriActivity::class.java);
+                    intent.putExtra("room_id", roomAlias)
+                    intent.putExtra("nick_name", Utils.getCache("nickname"))
+                    intent.putExtra("user_id", user_id)
+                    startActivity(intent)
+                }
             } else {
                 if (TextUtils.isEmpty(user_id)) {
                     toast("请先登录")
