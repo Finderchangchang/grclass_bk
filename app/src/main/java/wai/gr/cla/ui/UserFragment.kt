@@ -132,7 +132,7 @@ class UserFragment : BaseFragment() {
         user_mv_kecheng.setOnClickListener {
             if (checkLogin()) {
                 startActivity(Intent(MainActivity.main, MyOrderGVListActivity::class.java)
-                        .putExtra("free", "")
+                        .putExtra("free", "3")
                         .putExtra("which", 4))
             }
         }

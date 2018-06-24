@@ -61,7 +61,7 @@ class DetailPlayer : BaseActivity() {
     private var roomAlias: String? = null
     private var loginId: String = Utils.getCache(key.KEY_USERID)
     var model: TuiJianModel? = null
-    public var is_live = false
+    var is_live = false
     internal var downloadManager: DownloadManager? = null
 
     companion object {
@@ -300,7 +300,7 @@ class DetailPlayer : BaseActivity() {
                              * 2.单个视频free	如果为1代表免费，可以随意观看。
                              */
                             if (model!!.i_can_play) {//能播放隐藏价格
-                                if (is_live) {
+                                if (!TextUtils.isEmpty(model?.room_id)) {
                                     price_ll.visibility = View.VISIBLE//隐藏价格
                                     car_btn.visibility = View.VISIBLE
                                     buy_btn.visibility = View.GONE

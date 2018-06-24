@@ -153,7 +153,7 @@ class MyOrderGVListActivity : BaseActivity() {
                     if (free == "3") is_live = true
                     startActivity(Intent(this, DetailPlayer::class.java)
                             .putExtra("is_live", is_live)
-                            .putExtra("cid", sp2_list!![position].id))
+                            .putExtra("cid", sp2_list[position].id))
                 }
                 else -> startActivity(Intent(this, DetailPlayer::class.java).putExtra("is_live", true).putExtra("cid", sc6_list!![position].course!!.id))
             }
