@@ -254,35 +254,39 @@ class UserFragment : BaseFragment() {
                 .execute(object : JsonCallback<LzyResponse<UserModel>>() {
                     override fun onSuccess(t: LzyResponse<UserModel>, call: okhttp3.Call?, response: okhttp3.Response?) {
                         if (t.code == 0) {
-                            url = url().total + t.data!!.head_img
-                            gb = t.data!!.guanbi
-                            GlideImgManager.glideLoader(MainActivity.main, url().total + t.data!!.head_img, R.mipmap.defult_user, R.mipmap.defult_user, user_iv_header, 0)
-                            user_tv_name!!.text = t.data!!.nick
-                            Utils.putCache("nickname",t.data!!.nick)
-                            Utils.putCache("tel", t.data!!.username)
-                            nick = t.data!!.nick!!
+                            if (!TextUtils.isEmpty(Utils.getCache(key.KEY_SCHOOLID))) {
+                                url = url().total + t.data!!.head_img
+                                gb = t.data!!.guanbi
+                                GlideImgManager.glideLoader(MainActivity.main, url().total + t.data!!.head_img, R.mipmap.defult_user, R.mipmap.defult_user, user_iv_header, 0)
+                                user_tv_name!!.text = t.data!!.nick
+                                Utils.putCache("nickname", t.data!!.nick)
+                                Utils.putCache("tel", t.data!!.username)
+                                nick = t.data!!.nick!!
+                            }
+                        } else {
+                            user_tv_name!!.text = "未登录"
                         }
                         main_srl!!.isRefreshing = false
                     }
 
                     override fun onError(call: Call?, response: Response?, e: Exception?) {
                         main_srl!!.isRefreshing = false//加载个人信息失败说明已经退出登录了
-                        //if (!TextUtils.isEmpty(Utils.getCache(key.KEY_USERID))) {
-                        //Toast.makeText(MainActivity.main, common().toast_error(e!!), Toast.LENGTH_SHORT).show()
-                        login()
-                        //}
+                        if (!TextUtils.isEmpty(Utils.getCache(key.KEY_USERID))) {
+                            Toast.makeText(MainActivity.main, common().toast_error(e!!), Toast.LENGTH_SHORT).show()
+                            login()
+                        }
                         Log.i("--!!-------", common().toast_error(e!!) + "***" + Utils.getCache(key.KEY_USERID))
 
-//                        Utils.putCache(key.KEY_SCHOOLID, "")
-//                        //Utils.putCache(key.KEY_Tel, "")
-//                        Utils.putCache("tel", "")
-//                        Utils.putCache(key.KEY_PWd, "")
-//                        Utils.putCache(key.KEY_WX, "")
-//                        Utils.putCache(key.KEY_QQ, "")
-//                        Utils.putCache(key.KEY_USERID, "")
+                        Utils.putCache(key.KEY_SCHOOLID, "")
+                        //Utils.putCache(key.KEY_Tel, "")
+                        Utils.putCache("tel", "")
+                        Utils.putCache(key.KEY_PWd, "")
+                        Utils.putCache(key.KEY_WX, "")
+                        Utils.putCache(key.KEY_QQ, "")
+                        Utils.putCache(key.KEY_USERID, "")
                         GlideImgManager.glideLoader(MainActivity.main, "", R.mipmap.defult_user, R.mipmap.defult_user, user_iv_header, 0)
-//                        user_tv_name!!.text = "未登录"
-                        //MainActivity.main!!.toast(common().toast_error(e!!))
+                        user_tv_name!!.text = "未登录"
+                        MainActivity.main!!.toast(common().toast_error(e!!))
 
                     }
                 })

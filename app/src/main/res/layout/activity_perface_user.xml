@@ -166,9 +166,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:background="@null"
-            android:hint="请填写客服码，方便专属客服为您服务（选填）"
+            android:hint="请填写客服码（选填）"
             android:textColor="#016DB8"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
