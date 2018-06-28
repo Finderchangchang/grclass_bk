@@ -67,8 +67,13 @@ class VideoFragment() : Fragment() {
                     } else {
                         when (model.status) {
                             1 -> {
+
                                 title = "[回放]" + name + "(" + model.longtime + ")"
-                                holder.setTextColor(R.id.tv, R.color.text_hint)
+                                if(TextUtils.isEmpty(model.url)){
+                                    holder.setTextColor(R.id.tv, R.color.text_hint)
+                                }else{
+                                    holder.setTextColor(R.id.tv, R.color.black)
+                                }
                             }
                             2 -> {
                                 title = "[回放]" + name + "(" + model.zhibo_date + "已结束)"
@@ -250,7 +255,7 @@ class VideoFragment() : Fragment() {
                     if (DetailPlayer.main!!.play(position)) {
                         var video_url = ml_list!![position].url!!
                         if (!TextUtils.isEmpty(video_url)) {
-                            DetailPlayer.main!!.play(ml_list!![position].url!!, ml_list!![position].thumbnail!!, ml_list!![position].name!!)
+                            DetailPlayer.main!!.play(ml_list!![position].url!!, ml_list!![position].thumbnail, ml_list!![position].name)
                             ml_list!![center_click].check = false
                             center_click = position
                             ml_list!![center_click].check = true

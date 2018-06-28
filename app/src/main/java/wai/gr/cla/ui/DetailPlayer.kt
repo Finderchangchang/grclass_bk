@@ -101,10 +101,11 @@ class DetailPlayer : BaseActivity() {
                     val modd = model!!.videos!![play_url_position]
                     if (modd.free == 1 || model!!.i_can_play) {
                         var url = model!!.videos!![play_url_position].url//视频地址
-                        if (!TextUtils.isEmpty(url)) {
+                        if (!TextUtils.isEmpty(url)&&url!!.contains(".mp4")) {
                             url = url!!.replace(".mp4", ".gr.mp4")
+                            url = url().total + "/fP3m8r/t7Me1e" + url
                         }
-                        url = url().total + "/fP3m8r/t7Me1e" + url
+//                        url = url().total + "/fP3m8r/t7Me1e" + url
                         if (downloadManager!!.getDownloadInfo(url) != null) {
                             Toast.makeText(applicationContext, "任务已经在下载列表中", Toast.LENGTH_SHORT).show()
                         } else {
@@ -374,10 +375,10 @@ class DetailPlayer : BaseActivity() {
     fun play(url: String, img_url: String?, title: String?) {
         if (!TextUtils.isEmpty(url)) {
             var url = url
-            if (!TextUtils.isEmpty(url)) {
-                url = url.replace(".mp4", ".gr.mp4")
+            if (!TextUtils.isEmpty(url)&&url!!.contains(".mp4")) {
+                url = url!!.replace(".mp4", ".gr.mp4")
+                url = url().total + "/fP3m8r/t7Me1e" + url
             }
-            url = url().total + "/fP3m8r/t7Me1e" + url
             Log.i("url", url)
             detailPlayer!!.setUp(url, false, null)
             if (!TextUtils.isEmpty(img_url)) loadsp(img_url!!)
